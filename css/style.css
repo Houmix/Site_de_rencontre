@@ -1,0 +1,235 @@
+
+
+
+
+a {
+    color : gray;
+    cursor: pointer;
+    text-decoration: underline;
+}
+a:hover {
+    color : rgb(129, 100, 42);
+}
+
+
+
+
+.container {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: min-content; /* Ajustez la hauteur selon vos besoins */
+}
+main {
+    flex : 1;
+    min-height: 80vh;
+    padding: 0;
+    padding-bottom: 60px;
+    background-color: #F9F5F2;
+}
+.left, .right {
+    width: min-content;
+    text-align: center;
+    padding: initial;
+}
+.right {
+    right: 0;
+}
+.center {
+    width: 100%;
+    text-align: center;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+p {
+    color : #898383;
+}
+
+.offres {
+    background-color: #e6d9d9;
+    display : flex;
+    width: 100%;
+}
+.offres p {
+    width: 100%;
+    text-align: center;
+    color : black;
+}
+
+
+html {
+    height: 100%;
+    background-color: #e6d9d9;
+}
+
+body {
+    min-height: 100%;
+    display: block;
+    flex-direction: column;
+    font-family: "Arial", Sans-serif;
+    background-color: #e6d9d9;
+}
+
+/* Sidenav menu */
+.sidenav {
+    overflow-y: auto;
+    height: min-content;
+    width: 100%;
+    position: fixed;
+    z-index: 4;
+    top: -100%;
+    left: 0;
+    /* left: -250px; pour latéral */
+    background-color: #F9F5F2;
+    padding-top: 60px;
+    transition: top 0.7s ease;
+}
+
+/* Sidenav menu links */
+.sidenav a {
+    padding: 4px 8px 8px 32px;
+    text-decoration: none;
+    font-size:medium;
+    color: #818181;
+    display: block;
+    transition: 0.5s;
+}
+
+.sidenav a:hover {
+    color: #000000;
+}
+
+.sidenav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Active class */
+.sidenav.active {
+    top: 0;
+}
+
+/* Close btn */
+.sidenav .close {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+}
+
+/* Icône burger */
+.burger-icon span {
+    display: block;
+    width: 35px;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    margin: 6px 0;
+    right: 25px;
+}
+body {
+    min-height: 100%;
+    display: block;
+    flex-direction: column;
+    font-family: "Arial", Sans-serif;
+    background-color: #e6d9d9;
+}
+
+.container a {
+    color: black;
+    text-decoration: none;
+}
+.container h1 {
+    color: black;
+}
+
+
+
+
+.image {
+    width: 50%;
+    padding: 15px;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;  /* Ajoutez cette ligne pour centrer horizontalement */
+    align-items: center;  /* Ajoutez cette ligne pour centrer verticalement */
+}
+
+.form input[type="submit"]{
+    background-color: #494a48;
+    color : white;
+    text-align: left;
+    padding : 0 10px 0 10px;
+    cursor: pointer;
+    float : right;
+}
+
+.form label{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+    text-align : left;
+    font-weight: bolder;
+    padding-bottom: 10px;
+}
+
+label {
+    text-align: right;
+}
+
+.center-div {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+} 
+
+@media (max-width: 768px) {
+    a {
+        color : gray;
+        text-align: left;
+        cursor: pointer;
+        padding: 0;
+        text-decoration: underline;
+    }
+    a:hover {
+        color : rgb(129, 100, 42);
+    }
+
+
+    p {
+        font-size: small;
+    }
+    .offres {
+        flex-direction: column;
+    }
+    .offres p {
+        width: 100%;
+    }
+    .image {
+        width: 100%;
+    }
+
+}
+
+
+
+.block {
+    width: calc(33.33% - 20px); /* -20px pour compenser les marges */
+    margin: 10px; /* Marge entre les blocs */
+    box-sizing: border-box; /* Pour inclure les marges dans la largeur */
+    background-color: #f2f2f2;
+}
+
+@media screen and (max-width: 768px) {
+.block {
+    width: 100%; /* Sur les écrans plus petits, chaque bloc aura une largeur de 100% */
+}
+}
