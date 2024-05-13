@@ -51,8 +51,8 @@
                         <a id="closeBtn" href="#" class="close">×</a>
                         <ul>
                             <li id="nav"><a href="#">Accueil</a></li>
-                            <li id="nav"><a href="offres.html">Offres</a></li>
-                            <li id="nav"><a href="contact.html">Contact</a></li>
+                            <li id="nav"><a href="#">Offres</a></li>
+                            <li id="nav"><a href="#">Contact</a></li>
                             <li id="nav"><a href="#">Mon espace</a></li>
             
                         </ul>
@@ -66,58 +66,26 @@
         </div>
 
         <main>
-                <div class="container" id="banner" style="height: 40vh; padding: 40px;">
-                    
-                    <div class="center" style="z-index: 1;"><h1>Gros titre</h1></div>
+            
+            <div class="form">
+                <form action="login.php" method="post">
+                    <label for="username">Nom d'utilisateur :</label><br>
+                    <input type="text" id="username" name="username" required><br>
+                    <label for="password">Mot de passe :</label><br>
+                    <input type="password" id="password" name="password" required><br><br>
+                    <input type="submit" value="Se connecter">
+                
+        
+                    <a href="{% url 'Forgot_Password' %}" style="float:right">Mot de passe oublié ?</a>
                     <br>
-                    <br>
-                    <div class="center" style="z-index: 1;"><a href="#" id="buy">Découvrir/S'abonner</a><a href="#cards">En savoir +</a></div>
-                </div>
+        
+                    <a href="{% url 'SignUp' %}?next={{request.GET.next}}">Créer un compte</a>
+                    <input type="submit" value="Se connecter">
+        
+                </form>
+                
+            </div>
 
-                <div class="container" id="cards" style="height: min-content; padding: 100px 0;">
-                    <div class="center"><h1>Titre</h1></div>
-                    <br><br>
-                    <div class="block">
-                        <div class="card">
-                            <h5>Argsl</h5>
-                            <br>
-                            <p>text arg</p>
-                        </div>
-                        <div class="card">
-                            <h5>Argsl</h5>
-                            <br>
-                            <p>text arg</p>
-                        </div>
-                        <div class="card">
-                            <h5>Argsl</h5>
-                            <br>
-                            <p>text arg</p>
-                        </div>
-                        <div class="card">
-                            <h5>Argsl</h5>
-                            <br>
-                            <p>text arg</p>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="container">
-                    <div class="block">
-                        
-                            <div class="card">
-                                <p>presentation</p>
-                            </div>
-                            <div class="card">
-                                <p>presentation</p>
-                            </div>
-                            <div class="card">
-                                <p>presentation</p>
-                            </div>
-                    </div>
-                    
-                        
-                    </div>
-                </div>
         </main>
            
         <footer>

@@ -1,0 +1,70 @@
+
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  /* Ajoutez cette ligne pour centrer horizontalement */
+    align-items: center;  /* Ajoutez cette ligne pour centrer verticalement */
+    min-height: 70vh;
+}
+
+form input[type="submit"]{
+    background-color: #2a2b29;
+    color : wheat;
+    border-radius: 30px;
+    text-align: left;
+    padding : 0 10px 0 10px;
+    cursor: pointer;
+    float : right;
+}
+
+.form a {
+    color : gray;
+    text-align: right;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.form a:hover {
+    color : rgb(129, 100, 42);
+}
+
+
+
+.custom-placeholder {
+    font-style: italic;
+    font-size: small;
+    font-weight: lighter;
+}
+
+
+
+a {
+    color : gray;
+    text-align: right;
+    cursor: pointer;
+    text-decoration: underline;
+}
+a:hover {
+    color : rgb(129, 100, 42);
+}
+
+
+.page{
+    display: grid; 
+align-items: center;
+justify-content: center;
+}
+
+.field-container {
+    display: flex; /* Permet aux éléments enfants de s'étendre sur toute la largeur */
+    align-items: center; /* Aligne verticalement le contenu */
+    width: 300%;
+}
+.field-container label {
+    flex: 1; /* Permet à l'étiquette de prendre autant d'espace que possible */
+}
+.field-container input,
+.field-container select,
+.field-container textarea {
+    flex: 2; /* Permet au champ d'entrée de prendre autant d'espace que possible */
+}
