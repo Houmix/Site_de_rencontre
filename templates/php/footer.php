@@ -26,7 +26,7 @@
 
         </footer>
 
-        <script src="{% static 'js/sidenav.js' %}"></script>
+        <script src="js/sidenav.js"></script>
         
     </body>
         
