@@ -6,11 +6,13 @@
                 <div class="center">
                     <a href="#" id="footer">Acceuil</a>
                     &nbsp;
-                    <a href="#" id="footer">A porpos de nous</a>
+                    <a href="about_us.php" id="footer">A porpos de nous</a>
                     &nbsp;
-                    <a href="#" id="footer">Nos produits</a>
+                    <a href="policy.php" id="footer">Nos politiques</a>
                     &nbsp;
-                    <a href="#" id="footer">Nous contacter</a>
+                    <a href="offer.php" id="footer">Nos offres</a>
+                    &nbsp;
+                    <a href="contact.php" id="footer">Nous contacter</a>
                 </div>
                 <br>
                 <div class="containerF network_pc">

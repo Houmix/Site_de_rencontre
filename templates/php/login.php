@@ -5,13 +5,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = htmlspecialchars($_POST["username"]);
     $password = htmlspecialchars($_POST["password"]);
 
-    // Vérifier les informations de connexion (Exemple de vérification basique)
+    // Vérifier les informations de connexion
+    // Rechercher dans la base de donnée l'utilisateur en question puis verifier le mdp
     $username_valide = "utilisateur";
     $password_valide = "motdepasse";
 
     if ($username == $username_valide && $password == $password_valide) {
         // Connexion réussie, rediriger vers une page de succès
-        header("Location: succes.php");
+        header("Location: ../home.php");
         exit;
     } else {
         // Identifiants incorrects, afficher un message d'erreur
@@ -19,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 } else {
     // Redirection vers le formulaire si les données n'ont pas été soumises par POST
-    header("Location: index.php");
+    header("Location: ../login.php");
     exit;
 }
 ?>

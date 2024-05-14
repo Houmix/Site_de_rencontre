@@ -7,13 +7,12 @@
                     <input type="text" id="username" name="username" required><br>
                     <label for="password">Mot de passe :</label><br>
                     <input type="password" id="password" name="password" required><br><br>
-                    <input type="submit" value="Se connecter">
                 
         
-                    <a href="{% url 'Forgot_Password' %}" style="float:right">Mot de passe oublié ?</a>
+                    <a href="forgotten_password.php">Mot de passe oublié ?</a>
                     <br>
         
-                    <a href="{% url 'SignUp' %}?next={{request.GET.next}}">Créer un compte</a>
+                    <a href="signUp.php">Créer un compte</a>
                     <input type="submit" value="Se connecter">
         
                 </form>

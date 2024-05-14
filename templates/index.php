@@ -51,7 +51,7 @@
                         <a id="closeBtn" href="#" class="close">×</a>
                         <ul>
                             <li id="nav"><a href="#">Accueil</a></li>
-                            <li id="nav"><a href="offres.html">Offres</a></li>
+                            <li id="nav"><a href="offres.php">Offres</a></li>
                             <li id="nav"><a href="contact.html">Contact</a></li>
                             <li id="nav"><a href="#">Mon espace</a></li>
             

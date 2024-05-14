@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 } else {
     // Redirection vers le formulaire si les données n'ont pas été soumises par POST
-    header("Location: formulaire_contact.html");
+    header("Location: contact.php");
     exit;
 }
 ?>
