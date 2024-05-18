@@ -1,5 +1,5 @@
 <!-- index.php -->
-<?php include 'php/header.php'; ?>
+<?php include '../template/header.php'; ?>
 
 <?php
 session_start();
@@ -14,7 +14,7 @@ if (isset($_SESSION['wrong_passord'])) {
 ?>
             
             <div class="form">
-                <form action="php/loginF.php" method="post">
+                <form action="form/loginF.php" method="post">
                     <label for="email">Nom d'utilisateur :</label><br>
                     <input type="email" id="email" name="email" required><br>
                     <label for="password">Mot de passe :</label><br>
@@ -31,4 +31,4 @@ if (isset($_SESSION['wrong_passord'])) {
                 
             </div>
 
-<?php include 'php/footer.php'; ?>
+<?php include '../template/footer.php'; ?>

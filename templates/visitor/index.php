@@ -1,9 +1,9 @@
-<?php include 'php/header.php'; ?>
+<?php include '../template/header.php'; ?>
 
 <?php 
-try {
+
     // Créer (ou ouvrir) une connexion à la base de données SQLite
-    $pdo = new PDO('sqlite:php/DB/my_database.db');
+    $pdo = new PDO('sqlite:../DB/my_database.db');
     // Configurer PDO pour lancer des exceptions en cas d'erreur
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -13,7 +13,7 @@ try {
 
     // Récupérer tous les enregistrements sous forme de tableau associatif
     $subcriptions = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} //catch (PDOException $e) {
+//catch (PDOException $e) {
     //echo "Erreur lors de la récupération des enregistrements : " . $e->getMessage();
 //}
 
@@ -70,4 +70,4 @@ try {
         
     </div>
 </div>
-<?php include 'php/footer.php'; ?>
+<?php include '../template/footer.php'; ?>

@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Vérifier les informations de connexion
     // Rechercher dans la base de donnée l'utilisateur en question puis verifier le mdp
 
-    $connexion = new PDO('sqlite:DB/my_database.db');
+    $connexion = new PDO('sqlite:../../DB/my_database.db');
     
     // Préparer la requête SQL pour sélectionner l'utilisateur par son email
     $requete = $connexion->prepare("SELECT * FROM utilisateurs WHERE email = ?");

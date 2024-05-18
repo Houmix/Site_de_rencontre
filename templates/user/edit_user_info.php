@@ -1,5 +1,5 @@
 <!-- index.php -->
-<?php include 'php/header.php'; ?>
+<?php include '../template/header.php'; ?>
 <h2>Modification de mes infos</h2><br>
 
             
@@ -18,7 +18,7 @@ if (isset($_SESSION['erreur_enregistrement'])) {
 
 
 ?>
-<form action="php/edit_user_infoF.php" method="post">
+<form action="form/edit_user_infoF.php" method="post">
 
     <label for="gender">Genre :</label>
     <select id="gender" name="gender">
@@ -61,4 +61,4 @@ if (isset($_SESSION['erreur_enregistrement'])) {
 </div>
 
 
-<?php include 'php/footer.php'; ?>
+<?php include '../template/footer.php'; ?>

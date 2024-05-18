@@ -1,5 +1,5 @@
 <!-- index.php -->
-<?php include 'php/header.php'; ?>
+<?php include '../template/header.php'; ?>
 <h2>Inscription</h2><br>
 
             
@@ -103,4 +103,4 @@ if (isset($_SESSION['enregistrement_reussi'])) {
 </div>
 
 
-<?php include 'php/footer.php'; ?>
+<?php include '../template/footer.php'; ?>

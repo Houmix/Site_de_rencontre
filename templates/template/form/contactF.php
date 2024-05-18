@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Vérifier si des données ont été soumises
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire

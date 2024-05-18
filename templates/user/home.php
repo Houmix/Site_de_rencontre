@@ -1,4 +1,4 @@
-<?php include 'php/header.php'; ?>
+<?php include '../template/header.php'; ?>
 
 <div class="container">
     <div>
@@ -10,4 +10,4 @@
 </div>
 
 
-<?php include 'php/footer.php'; ?>
+<?php include '../template/footer.php'; ?>

@@ -1,10 +1,10 @@
-<?php include 'php/header.php'; ?>
+<?php include '../template/header.php'; ?>
 
 <?php 
 
-$connexion = new PDO('sqlite:php/DB/my_database.db');
-$request = $connexion->prepare('SELECT * FROM utilisateurs WHERE email = ?');
-$request->execute($_SESSION["email"]);
+$connexion = new PDO('sqlite:../DB/my_database.db');
+$request = $connexion->prepare('SELECT * FROM utilisateurs WHERE user_id = ?');
+$request->execute($_SESSION["user_id"]);
 $response = $request->fetch();
 
 $subscription = $connexion->prepare("SELECT * FROM subscription WHERE name = ?");
@@ -89,10 +89,29 @@ if (isset($_SESSION['success'])) {
 <div>
     <h3>Mon abonnement</h3>
     <?php
+        if (isset($_SESSION['resiliation_succed'])) {
+            echo "<p style='color: red;'>{$_SESSION['resiliation_succed']}</p>";
+            unset($_SESSION['resiliation_succed']); // Supprimer le message d'erreur de la session après l'avoir affiché
+        }
+        if (isset($_SESSION['resiliation_error'])) {
+            echo "<p style='color: red;'>{$_SESSION['resiliation_error']}</p>";
+            unset($_SESSION['resiliation_error']); // Supprimer le message d'erreur de la session après l'avoir affiché
+        }
+        if (isset($_SESSION['resiliation_error2'])) {
+            echo "<p style='color: red;'>{$_SESSION['resiliation_error2']}</p>";
+            unset($_SESSION['resiliation_error2']); // Supprimer le message d'erreur de la session après l'avoir affiché
+        }
+        if (isset($_SESSION['user_not_found'])) {
+            echo "<p style='color: red;'>{$_SESSION['user_not_found']}</p>";
+            unset($_SESSION['user_not_found']); // Supprimer le message d'erreur de la session après l'avoir affiché
+        }
         if ($response2) {
             $subscription_detail = $connexion->prepare("SELECT * FROM user_subscription WHERE user_id = ?");
             $subscription_detail->execute($response["id"]);
             $response_subscription_detail->fetch();
+            $_SESSION["subscription_name"]= $response_subscription["name"];
+            
+
             echo "<p>Vous avez l'abonnement ".$response_subscription["name"]."</p>
             <p>Il se termine le ".$response_subscription_detail["end"]."</p>
             <p><a href='php/resilier.php'>Résilier</a> <a href='change_subscription.php'>Modifier<a>";
@@ -112,4 +131,4 @@ if (isset($_SESSION['success'])) {
 
 
 
-<?php include 'php/footer.php'; ?>
+<?php include '../template/footer.php'; ?>
