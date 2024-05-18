@@ -114,7 +114,8 @@ if (isset($_SESSION['success'])) {
 
             echo "<p>Vous avez l'abonnement ".$response_subscription["name"]."</p>
             <p>Il se termine le ".$response_subscription_detail["end"]."</p>
-            <p><a href='php/resilier.php'>Résilier</a> <a href='change_subscription.php'>Modifier<a>";
+            <p><a href='php/resilier.php' onclick='return confirm('Êtes-vous sûr de vouloir supprimer résiler ?')';>Résilier</a> <a href='change_subscription.php'>Modifier<a>";
+            
             
         } else {
             echo "<p>Vous n'avez aucun abonnement en cours</p>";
