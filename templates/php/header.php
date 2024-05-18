@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,11 +39,11 @@
         <nav>
             <div class="containerNav">
                 <div class="left image2" style="display:flex;">
-                    <p>ici</p>
+                    <p>Message</p>
                 </div>
     
                 <div class="center">
-                    <a href="#"><img src="pic/logo/logocompletSF.png" alt="Logo" width="auto" height="80px"></a>
+                    <a href="home.php"><img src="pic/logo/logocompletSF.png" alt="Logo" width="auto" height="80px"></a>
                 </div>
                 <div class="right">
                     <a href="#" id="openBtn">
@@ -54,11 +56,26 @@
                     <div id="mySidenav" class="sidenav">
                         <a id="closeBtn" href="#" class="close">×</a>
                         <ul>
-                            <li id="nav"><a href="home.php">Accueil</a></li>
-                            <li id="nav"><a href="offer.php">Offres</a></li>
-                            <li id="nav"><a href="contact.php">Contact</a></li>
-                            <li id="nav"><a href="login.php">Mon espace</a></li>
-            
+                        <?php
+                            session_start();
+                            // Vérifier si l'utilisateur est connecté
+                            var_dump($_SESSION);
+                            if (isset($_SESSION["user_id"]) && $_SESSION["user_id"]) {
+                                // Afficher les liens spécifiques aux utilisateurs connectés
+                                
+                               echo "<li id='nav'><a href='home.php'>Accueil</a></li>
+                                    <li id='nav'><a href='contact.php'>Contact</a></li>
+                                    <li id='nav'><a href='user_space.php'>Mon espace</a></li>
+                                    <li id='nav'><a href='php/logOut.php'>Déconnexion</a></li>";
+                                
+                            } else {
+                                // Afficher les liens spécifiques aux utilisateurs non connectés
+                                echo "<li id='nav'><a href='index.php'>Accueil</a></li>
+                                    <li id='nav'><a href='contact.php'>Contact</a></li>
+                                    <li id='nav'><a href='login.php'>Connexion/Inscription</a></li>";
+                                
+                            }
+                        ?>
                         </ul>
                 
                     </div>

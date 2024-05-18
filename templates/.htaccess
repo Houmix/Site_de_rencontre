@@ -1,0 +1,6 @@
+RewriteEngine On
+
+# Si l'utilisateur tente d'accéder à une page sous /protected et qu'il n'est pas connecté, il est redirigé vers login.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^protected/(.*)$ check_auth.php [L]

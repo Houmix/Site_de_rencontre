@@ -1,4 +1,4 @@
-<!-- index.php -->
+
 <?php include 'php/header.php'; ?>
     <div class="form">
         <h2>Contactez-nous</h2>
