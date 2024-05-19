@@ -11,6 +11,7 @@ CREATE TABLE user (
     orientation TEXT NOT NULL,
     bio TEXT,
     is_admin INTEGER NOT NULL DEFAULT 0,
+    blocked INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     subscription TEXT
 );

@@ -11,6 +11,10 @@ if (isset($_SESSION['wrong_passord'])) {
     echo "<p style='color: red;'>{$_SESSION['wrong_passord']}</p>";
     unset($_SESSION['wrong_passord']); // Supprimer le message d'erreur de la session après l'avoir affiché
 }
+if (isset($_SESSION['blocked'])) {
+    echo "<p style='color: red;'>{$_SESSION['blocked']}</p>";
+    unset($_SESSION['blocked']); // Supprimer le message d'erreur de la session après l'avoir affiché
+}
 ?>
             
             <div class="form">

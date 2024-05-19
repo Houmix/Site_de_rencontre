@@ -27,13 +27,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // Vérifier si le mot de passe saisi correspond au mot de passe stocké
         if (password_verify($password, $resultat['password'])) {
+
+            if ($resultat["blocked"]) {
+                $_SESSION["blocked"] = "Compte bloqué";
+                header("Location: ../login.php");
+            }
             
             // Si les mots de passe correspondent, l'authentification est réussie
             $_SESSION["user_id"] = $resultat["id"];
-            header("Location: ../signUp.php");
+            header("Location: ../home.php");
             exit;
         } else {
-            header("Location: ../home.php");
+            $_SESSION["wrong_passord"] = "Adresse e-mail ou mot de passe eronné.";
+            header("Location: ../login.php");
             exit;
         }
     } else {

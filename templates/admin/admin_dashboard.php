@@ -58,8 +58,9 @@ try {
                         <td><?php echo htmlspecialchars($user['city']); ?></td>
                         <td><?php echo htmlspecialchars($user['subscription']); ?></td>
                         <td>
-                            <a href="view_profile.php?id=<?php echo $user['id']; ?>">Voir le profil</a> |
-                            <a href="edit_profile.php?id=<?php echo $user['id']; ?>">Modifier le profil</a> |
+                            <a href="view_profile.php?id=<?php echo $user['id']; ?>">Voir</a> |
+                            <a href="edit_profile.php?id=<?php echo $user['id']; ?>">Modifier</a> |
+                            <a href="block_profile.php?id=<?php echo $user['id']; ?>">Bloquer</a> |
                             <a href="delete_user.php?id=<?php echo $user['id']; ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">Supprimer</a>
                         </td>
                     </tr>
