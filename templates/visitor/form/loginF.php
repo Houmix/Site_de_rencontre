@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $connexion = new PDO('sqlite:../../DB/my_database.db');
     
     // Préparer la requête SQL pour sélectionner l'utilisateur par son email
-    $requete = $connexion->prepare("SELECT * FROM utilisateurs WHERE email = ?");
+    $requete = $connexion->prepare("SELECT * FROM user WHERE email = ?");
     $requete->execute([$email]);
 
     // Récupérer le résultat de la requête

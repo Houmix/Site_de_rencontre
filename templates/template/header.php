@@ -63,16 +63,16 @@
                             if (isset($_SESSION["user_id"]) && $_SESSION["user_id"]) {
                                 // Afficher les liens spécifiques aux utilisateurs connectés
                                 
-                               echo "<li id='nav'><a href='home.php'>Accueil</a></li>
-                                    <li id='nav'><a href='contact.php'>Contact</a></li>
-                                    <li id='nav'><a href='user_space.php'>Mon espace</a></li>
-                                    <li id='nav'><a href='php/logOut.php'>Déconnexion</a></li>";
+                               echo "<li id='nav'><a href='../user/home.php'>Accueil</a></li>
+                                    <li id='nav'><a href='../template/contact.php'>Contact</a></li>
+                                    <li id='nav'><a href='../user/user_space.php'>Mon espace</a></li>
+                                    <li id='nav'><a href='../user/form/logOut.php'>Déconnexion</a></li>";
                                 
                             } else {
                                 // Afficher les liens spécifiques aux utilisateurs non connectés
-                                echo "<li id='nav'><a href='index.php'>Accueil</a></li>
-                                    <li id='nav'><a href='contact.php'>Contact</a></li>
-                                    <li id='nav'><a href='login.php'>Connexion/Inscription</a></li>";
+                                echo "<li id='nav'><a href='../user/index.php'>Accueil</a></li>
+                                    <li id='nav'><a href='../template/contact.php'>Contact</a></li>
+                                    <li id='nav'><a href='../visitor/login.php'>Connexion/Inscription</a></li>";
                                 
                             }
                         ?>

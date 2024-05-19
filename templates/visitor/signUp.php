@@ -25,15 +25,15 @@ if (isset($_SESSION['enregistrement_reussi'])) {
     unset($_SESSION["enregistrement_reussi"]);
 }
 ?>
-<form action="php/signUpF.php" method="post">
+<form action="form/signUpF.php" method="post">
 
-    <label for="gender">Genre :</label>
+    <label for="gender">Genre :</label><br>
     <select id="gender" name="gender">
         <option value="Homme">Homme</option>
         <option value="Femme">Femme</option>
         <option value="Autre">Autre</option>
 
-    </select>
+    </select><br>
     
     <label for="firstname">Prénom :</label><br>
     <input type="text" id="firstname" name="firstname" required><br>
@@ -41,11 +41,11 @@ if (isset($_SESSION['enregistrement_reussi'])) {
     <label for="lastname">Nom :</label><br>
     <input type="text" id="lastname" name="lastname" required><br>
 
-    <label for="phone">Numéro de telephone :</label>
-    <input type="number" id="phone" name="phone" required>
+    <label for="phone">Numéro de telephone :</label><br>
+    <input type="number" id="phone" name="phone" required><br>
 
-    <label for="city">Ville :</label>
-    <input type="text" id="city" name="city" required>
+    <label for="city">Ville :</label><br>
+    <input type="text" id="city" name="city" required><br>
 
     <label for="birthday">Date de naissance :</label><br>
     <input type="date" id="birthday" name="birthday" required><br>

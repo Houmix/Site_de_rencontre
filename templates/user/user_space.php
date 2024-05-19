@@ -3,8 +3,8 @@
 <?php 
 
 $connexion = new PDO('sqlite:../DB/my_database.db');
-$request = $connexion->prepare('SELECT * FROM utilisateurs WHERE user_id = ?');
-$request->execute($_SESSION["user_id"]);
+$request = $connexion->prepare('SELECT * FROM user WHERE id = ?');
+$request->execute([$_SESSION["user_id"]]);
 $response = $request->fetch();
 
 $subscription = $connexion->prepare("SELECT * FROM subscription WHERE name = ?");

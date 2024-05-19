@@ -15,6 +15,12 @@ if (isset($_GET['id'])) {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$userId]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        // Requête SELECT pour récupérer tous les abonnements
+        $sql = "SELECT * FROM subscription";
+        $stmt = $pdo->query($sql);
+
+        // Récupérer tous les enregistrements sous forme de tableau associatif
+        $subcriptions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if ($user) {
             // Afficher le formulaire d'édition
@@ -41,7 +47,22 @@ if (isset($_GET['id'])) {
                 <label>Bio:</label>
                 <textarea name="bio"><?php echo htmlspecialchars($user['bio']); ?></textarea><br>
                 <label>Abonnement:</label>
-                <input type="text" name="subscription" value="<?php echo htmlspecialchars($user['subscription']); ?>"><br>
+                <select id="subscription" name="subscription">
+                    <?php 
+                        if ($subcriptions) {
+                            foreach ($subcriptions as $subcription) {
+                                if ($subcription['name'] != $_SESSION["subscription_name"]) {
+                                    echo "<option value='" . htmlspecialchars($subcription['name'], ENT_QUOTES, 'UTF-8') . "'>" . htmlspecialchars($subcription['name'], ENT_QUOTES, 'UTF-8') . "</option>";
+                                } else {
+                                    echo "<option value='" . htmlspecialchars($subcription['name'], ENT_QUOTES, 'UTF-8') . "' disabled>" . htmlspecialchars($subcription['name'], ENT_QUOTES, 'UTF-8') . "</option>";
+                                }
+                            }
+                        } else {
+                            echo "<p>aucun abonnement actif</p>";
+                        }
+                    ?>
+                </select>
+                
                 <input type="submit" value="Mettre à jour">
             </form>
             <?php

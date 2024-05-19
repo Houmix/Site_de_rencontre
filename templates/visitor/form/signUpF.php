@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $connexion = new PDO('sqlite:../../DB/my_database.db');
 
     // Préparer la requête SQL pour sélectionner l'utilisateur par son email
-    $requete = $connexion->prepare("SELECT * FROM utilisateurs WHERE email = ?");
+    $requete = $connexion->prepare("SELECT * FROM user WHERE email = ?");
     $requete->execute([$email]);
 
     // Récupérer le résultat de la requête
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
 
         // Préparer et exécuter la requête SQL pour insérer l'utilisateur dans la table `utilisateurs`
-        $requete = $connexion->prepare("INSERT INTO utilisateurs (gender, firstname, lastname, email, password, phone, city, birthday, orientation, bio) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $requete = $connexion->prepare("INSERT INTO user (gender, firstname, lastname, email, password, phone, city, birthday, orientation, bio) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $resultat = $requete->execute([$gender, $firstname, $lastname, $email, $password, $phone, $city, $birthday, $orientation, $bio]);
 
         if ($resultat) {
