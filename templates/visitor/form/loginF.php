@@ -32,10 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["blocked"] = "Compte bloqué";
                 header("Location: ../login.php");
             }
-            
+            $_SESSION["dog_breed"] = $resultat["dog_breed"];
+            $_SESSION["orientation"] = $resultat["orientation"];
             // Si les mots de passe correspondent, l'authentification est réussie
             $_SESSION["user_id"] = $resultat["id"];
-            header("Location: ../home.php");
+            header("Location: ../../user/home.php");
             exit;
         } else {
             $_SESSION["wrong_passord"] = "Adresse e-mail ou mot de passe eronné.";

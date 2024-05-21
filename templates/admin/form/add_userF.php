@@ -12,6 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $birthday = $_POST['birthday'];
     $orientation = $_POST['orientation'];
     $bio = $_POST['bio'];
+    $dog_breed = $_POST["dog_breed"];
+
 
     // Chemin vers la base de données SQLite
     $dbPath = '../../DB/my_database.db';
@@ -23,9 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Requête INSERT pour ajouter un nouvel utilisateur
-        $sql = "INSERT INTO user (gender, firstname, lastname, email, password, phone, city, birthday, orientation, bio) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO user (gender, firstname, lastname, email, password, phone, city, birthday, orientation, bio, dog_breed) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$gender, $firstname, $lastname, $email, $password, $phone, $city, $birthday, $orientation, $bio]);
+        $stmt->execute([$gender, $firstname, $lastname, $email, $password, $phone, $city, $birthday, $orientation, $bio, $dog_breed]);
 
         // Rediriger vers une page de confirmation ou la liste des utilisateurs après création
         header("Location: ../admin_dashboard.php");

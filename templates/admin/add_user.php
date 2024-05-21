@@ -55,7 +55,15 @@
             <option value="asexuel">Asexuel(le)</option>
             <option value="autre">Autre</option>
         </select>
-        
+        <label for="dog_breed">Race de l'animal :</label><br>
+        <select id="dog_breed" name="dog_breed" required>
+            <option value="Akita">Akita</option>
+            <option value="Afghan Hound">Afghan Hound</option>
+            <option value="Alaskan Klee Kai">Alaskan Klee Kai</option>
+            <option value="American Hairless Terrier">American Hairless Terrier</option>
+            <option value="American Foxhounds">American Foxhounds</option>
+        </select>
+            
         <label>Bio:</label>
         <textarea name="bio"></textarea>
         

@@ -14,6 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $orientation = htmlspecialchars($_POST["orientation"]);
     $bio = htmlspecialchars($_POST["bio"]);
 
+    $dog_breed = htmlspecialchars($_POST["dog_breed"]);
+
     
 
     $connexion = new PDO('sqlite:../../DB/my_database.db');
@@ -37,7 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         phone = :phone,
         city = :city,
         orientation = :orientatinon,
-        bio = :bio
+        bio = :bio,
+        dog_breed = :dog_breed
         WHERE id = :id";
 
         
@@ -52,6 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam('orientation', $orientation);
         $stmt->bindParam('bio', $bio);
         $stmt->bindParam(':id', $userId);
+        $stmt->bindParam(':dog_breed', $dog_breed);
 
         // Exécuter la requête
         $stmt->execute();

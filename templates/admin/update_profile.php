@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $orientation = $_POST['orientation'];
     $bio = $_POST['bio'];
     $subscription = $_POST['subscription'];
+    $dog_breed = $_POST['dog_breed'];
 
     try {
         // Créer (ou ouvrir) une connexion à la base de données SQLite
@@ -21,9 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Requête UPDATE pour mettre à jour les détails de l'utilisateur
-        $sql = "UPDATE user SET gender = ?, firstname = ?, lastname = ?, email = ?, phone = ?, city = ?, birthday = ?, orientation = ?, bio = ?, subscription = ? WHERE id = ?";
+        $sql = "UPDATE user SET gender = ?, firstname = ?, lastname = ?, email = ?, phone = ?, city = ?, birthday = ?, orientation = ?, bio = ?, subscription = ?, dog_breed = ? WHERE id = ?";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$gender, $firstname, $lastname, $email, $phone, $city, $birthday, $orientation, $bio, $subscription, $userId]);
+        $stmt->execute([$gender, $firstname, $lastname, $email, $phone, $city, $birthday, $orientation, $bio, $subscription, $dog_breed, $userId]);
 
         // Rediriger vers la page de la liste des utilisateurs après mise à jour
         header("Location: admin_dashboard.php");

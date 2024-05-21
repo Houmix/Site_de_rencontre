@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $bio = htmlspecialchars($_POST["bio"]);
     $birthday = htmlspecialchars($_POST["birthday"]);
     
-    
+    $dog_breed = htmlspecialchars($_POST["dog_breed"]);
 
     $connexion = new PDO('sqlite:../../DB/my_database.db');
 
@@ -36,8 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
 
         // Préparer et exécuter la requête SQL pour insérer l'utilisateur dans la table `utilisateurs`
-        $requete = $connexion->prepare("INSERT INTO user (gender, firstname, lastname, email, password, phone, city, birthday, orientation, bio) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $resultat = $requete->execute([$gender, $firstname, $lastname, $email, $password, $phone, $city, $birthday, $orientation, $bio]);
+        $requete = $connexion->prepare("INSERT INTO user (gender, firstname, lastname, email, password, phone, city, birthday, orientation, bio, dog_breed) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $resultat = $requete->execute([$gender, $firstname, $lastname, $email, $password, $phone, $city, $birthday, $orientation, $bio, $dog_breed]);
 
         if ($resultat) {
 
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 echo "Une erreur s'est produite lors de l'envoi du message.";
             }
-            // Erreur enregistrement dans la base de donnée
+            // Succed enregistrement dans la base de donnée
             $_SESSION['enregistrement_reussi'] = "Compte crée avec succès, connectez-vous.";
             header("Location: ../login.php");
             exit;

@@ -41,6 +41,7 @@ try {
                 <th>Email</th>
                 <th>Téléphone</th>
                 <th>Ville</th>
+                <th>Race de l'animal</th>
                 <th>Abonnement</th>
                 <th>Actions</th>
             </tr>
@@ -56,6 +57,7 @@ try {
                         <td><?php echo htmlspecialchars($user['email']); ?></td>
                         <td><?php echo htmlspecialchars($user['phone']); ?></td>
                         <td><?php echo htmlspecialchars($user['city']); ?></td>
+                        <td><?php echo htmlspecialchars($user['dog_breed']); ?></td>
                         <td><?php echo htmlspecialchars($user['subscription']); ?></td>
                         <td>
                             <a href="view_profile.php?id=<?php echo $user['id']; ?>">Voir</a> |

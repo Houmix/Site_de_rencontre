@@ -12,7 +12,7 @@
     $stmt = $pdo->query($sql);
 
     // Récupérer tous les enregistrements sous forme de tableau associatif
-    $subcriptions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $subscriptions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 //catch (PDOException $e) {
     //echo "Erreur lors de la récupération des enregistrements : " . $e->getMessage();
 //}
@@ -32,15 +32,15 @@
     <br><br>
     <div class="block">
         <?php 
-            if ($subcriptions) {
-                foreach ($subcriptions as $subcription) {
+            if ($subscriptions) {
+                foreach ($subscriptions as $subscription) {
                     echo "<div class='card'>
-                            <h5>Abonnement mensuel".htmlspecialchars($subsiption['name'])."</h5>
+                            <h5>Abonnement mensuel".htmlspecialchars($subscription['name'])."</h5>
                             <br>
-                            <p>Description : ".htmlspecialchars($subcription['description'])."</p>
-                            <p>Prix : ".htmlspecialchars($subcription['price'])."</p>
-                            <p>Durée : ".htmlspecialchars($subcription['duration'])." jours</p>
-                            <p>Like : ".htmlspecialchars($subcription['numer_like'])."</p>
+                            <p>Description : ".htmlspecialchars($subscription['description'])."</p>
+                            <p>Prix : ".htmlspecialchars($subscription['price'])."</p>
+                            <p>Durée : ".htmlspecialchars($subscription['duration'])." jours</p>
+                            <p>Like : ".$subscription['number_like']."</p>
                         </div>";
                 }
             }

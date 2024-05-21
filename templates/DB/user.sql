@@ -13,5 +13,6 @@ CREATE TABLE user (
     is_admin INTEGER NOT NULL DEFAULT 0,
     blocked INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    subscription TEXT
+    subscription TEXT,
+    dog_breed TEXT NOT NULL
 );

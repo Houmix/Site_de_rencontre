@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $userId = $_POST['id'];
+    $target_userId = $_POST['id'];
     
 
     try {
@@ -12,15 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Requête UPDATE pour mettre à jour les détails de l'utilisateur
-        $sql = "UPDATE user SET blocked = ? WHERE id = ?";
+        $sql = "DELETE FROM blocked WHERE (user1_id, user2_id) VALUE ?,?";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute(["1", $userId]);
+        $stmt->execute([$_SESSION["user_id"], $target_userId]);
 
         // Rediriger vers la page de la liste des utilisateurs après mise à jour
-        header("Location: admin_dashboard.php");
+        header("Location: ../user/home.php");
         exit();
     } catch (Exception $e) {
-        echo "Erreur lors du bloquage de l'utilisateur : " . $e->getMessage();
+        echo "Erreur lors du débloquage de l'utilisateur : " . $e->getMessage();
     }
 } else {
     echo 'Méthode de requête invalide.';

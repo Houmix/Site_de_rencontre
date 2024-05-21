@@ -26,6 +26,8 @@ if (isset($_GET['id'])) {
             echo '<p>Email : ' . htmlspecialchars($user['email']) . '</p>';
             echo '<p>Téléphone : ' . htmlspecialchars($user['phone']) . '</p>';
             echo '<p>Ville : ' . htmlspecialchars($user['city']) . '</p>';
+            echo '<p>Race de l\'animal : ' . htmlspecialchars($user['dog_breed']) . '</p>';
+            echo '<p>Orientation : ' . htmlspecialchars($user['orienttion']) . '</p>';
             echo '<p>Abonnement : ' . htmlspecialchars($user['subscription']) . '</p>';
         } else {
             echo 'Utilisateur non trouvé.';

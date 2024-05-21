@@ -2,14 +2,14 @@
 
 <?php 
 
-$connexion = new PDO('sqlite:../DB/my_database.db');
-$request = $connexion->prepare('SELECT * FROM user WHERE id = ?');
+$pdo = new PDO('sqlite:../DB/my_database.db');
+$request = $pdo->prepare('SELECT * FROM user WHERE id = ?');
 $request->execute([$_SESSION["user_id"]]);
-$response = $request->fetch();
+$response = $request->fetchAll();
 
-$subscription = $connexion->prepare("SELECT * FROM subscription WHERE name = ?");
+$subscription = $pdo->prepare("SELECT * FROM subscription WHERE name = ?");
 $subscription->execute($response['subscription']);
-$response_subscription = $subscription->fetch();
+$response_subscription = $subscription->fetchAll();
 
 ?>
 
@@ -78,6 +78,10 @@ if (isset($_SESSION['success'])) {
         <p class="value"><?php echo $response['orientation']; ?></p>
     </div>
     <div class="infos">
+        <p class="type" >Race de l'animal :</p>
+        <p class="value"><?php echo $response['dog_breed']; ?></p>
+    </div>
+    <div class="infos">
         <p class="type" >Bio :</p>
         <p class="value"><?php echo $response['bio']; ?></p>
     </div>
@@ -105,10 +109,10 @@ if (isset($_SESSION['success'])) {
             echo "<p style='color: red;'>{$_SESSION['user_not_found']}</p>";
             unset($_SESSION['user_not_found']); // Supprimer le message d'erreur de la session après l'avoir affiché
         }
-        if ($response2) {
-            $subscription_detail = $connexion->prepare("SELECT * FROM user_subscription WHERE user_id = ?");
+        if ($response_subscription) {
+            $subscription_detail = $pdo->prepare("SELECT * FROM user_subscription WHERE user_id = ?");
             $subscription_detail->execute($response["id"]);
-            $response_subscription_detail->fetch();
+            $response_subscription_detail->fetchAll();
             $_SESSION["subscription_name"]= $response_subscription["name"];
             
 
@@ -126,6 +130,60 @@ if (isset($_SESSION['success'])) {
 
 <div>
     <h3>Mes matchs</h3>
+    <?php
+        // Requête SELECT pour recuperer les match
+        $sql = "SELECT * FROM match WHERE (user1_id = ?) OR (user2_id = ?)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$_SESSION['user_id'], $_SESSION['user_id']]);
+        $users_match = $stmt->fetchAll(PDO::fetchAll_ASSOC);
+        foreach ($users_match as $user) {
+            // Crée un objet DateTime à partir de la date de naissance
+            $birthdate = new DateTime($dateOfBirth);
+            // Obtenir la date actuelle
+            $currentDate = new DateTime();
+            // Calculer la différence entre la date actuelle et la date de naissance
+            $age = $currentDate->diff($birthdate)->y;
+   
+            echo "<div class='card'>
+                <h5>".$user['firstname']." ".$user['lastname']."</h5>
+                <h6>.".$age."</h6>
+                </div>
+                <div class='container'>
+                    <a href='../feature/message.php?id=".$user['id']."' class='add-to-cart left-text' id='like'>Envoyer un message</a>
+                    <a href='../feature/see_profile.php?id=".$user['id']."' class='right-text'>Voir +</a>
+                </div>";
+        }
+    ?>
+
+
+</div>
+
+
+<div>
+    <h3>Mes bloqués</h3>
+    <?php
+        // Requête SELECT pour récupérer tous les bloqué 
+        $sql = "SELECT * FROM blocked WHERE user1_id = ?)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$_SESSION['user_id']]);
+        $users_blocked = $stmt->fetchAll(PDO::fetchAll_ASSOC);
+        foreach ($users_blocked as $user) {
+            // Crée un objet DateTime à partir de la date de naissance
+            $birthdate = new DateTime($dateOfBirth);
+            // Obtenir la date actuelle
+            $currentDate = new DateTime();
+            // Calculer la différence entre la date actuelle et la date de naissance
+            $age = $currentDate->diff($birthdate)->y;
+   
+            echo "<div class='card'>
+                <h5>".$user['firstname']." ".$user['lastname']."</h5>
+                <h6>.".$age."</h6>
+                </div>
+                <div class='container'>
+                    <a href='../feature/unblocked.php?id=".$user['id']."' class='right-text'>Débloquer</a>
+                </div>";
+        }
+    ?>
 </div>
 
 
