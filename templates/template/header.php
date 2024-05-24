@@ -39,11 +39,18 @@
         <nav>
             <div class="containerNav">
                 <div class="left image2" style="display:flex;">
-                    <p>Message</p>
+                <?php
+                    if (isset($_SESSION["user_id"])) {
+                        echo "<p><a href='../feature/messages.php'><img src='../pic/messagerie.png' width='50px' height='50px'></a></p>";
+                        
+                    }
+                ?>
+                
+                    
                 </div>
     
                 <div class="center">
-                    <a href="home.php"><img src="pic/logo/logocompletSF.png" alt="Logo" width="auto" height="80px"></a>
+                    <a href="../user/home.php"><img src="../pic/logoSF.png" alt="Logo" width="auto" height="80px"></a>
                 </div>
                 <div class="right">
                     <a href="#" id="openBtn">
@@ -59,8 +66,8 @@
                         <?php
                             session_start();
                             // Vérifier si l'utilisateur est connecté
-                            var_dump($_SESSION);
-                            if (isset($_SESSION["user_id"]) && $_SESSION["user_id"]) {
+                            
+                            if (isset($_SESSION["user_id"])) {
                                 // Afficher les liens spécifiques aux utilisateurs connectés
                                 
                                echo "<li id='nav'><a href='../user/home.php'>Accueil</a></li>

@@ -2,7 +2,6 @@
 <?php include '../template/header.php'; ?>
 
 <?php
-session_start();
 if (isset($_SESSION['enregistrement_reussi'])) {
     echo "<p style='color: red;'>{$_SESSION['enregistrement_reussi']}</p>";
     unset($_SESSION["enregistrement_reussi"]);// Supprimer le message d'erreur de la session après l'avoir affiché
@@ -16,6 +15,7 @@ if (isset($_SESSION['blocked'])) {
     unset($_SESSION['blocked']); // Supprimer le message d'erreur de la session après l'avoir affiché
 }
 ?>
+
             
             <div class="form">
                 <form action="form/loginF.php" method="post">
@@ -26,7 +26,7 @@ if (isset($_SESSION['blocked'])) {
                 
         
                     <a href="forgotten_password.php">Mot de passe oublié ?</a>
-                    <br>
+
         
                     <a href="signUp.php">Créer un compte</a>
                     <input type="submit" value="Se connecter">

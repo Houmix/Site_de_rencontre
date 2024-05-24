@@ -1,5 +1,6 @@
 CREATE TABLE user (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
+    photo TEXT,
     gender TEXT NOT NULL,
     firstname TEXT NOT NULL,
     lastname TEXT NOT NULL,

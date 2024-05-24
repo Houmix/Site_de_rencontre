@@ -45,12 +45,12 @@
 </div>
 <div>
     <h3>Choisissez votre abonnement :</h3>
-    <?php //Récupère l'abonnement de l'utilisateur depuis a session
+    <?php if ($_SESSION["subscription_name"]) {
         echo "<p>Votre abonnement actuel : ".$_SESSION["subscription_name"]."</p>";
+    }
     ?>
-    <p>Votre abonnement actuel :</p>
-    <p>Modifier :</p>
-    <form action="form/subscribeF.php" method="POST">
+    <div class="form">
+        <form action="form/subscribeF.php" method="POST">
         <label>Choisir</label>
         <select id="subscription" name="subscription">
             <?php 
@@ -67,6 +67,8 @@
         </select>
         <button type="submit">S'abonner</button>
     </form>
+    </div>
+    
     
 </div>
 <?php include '../template/footer.php'; ?>

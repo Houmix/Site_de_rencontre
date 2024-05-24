@@ -2,23 +2,38 @@
            
         <footer>
             <div class="container">
-                <div class="center"><img src="pic/logo/logocompletSF.png" alt="Logo" width="auto" height="80px"></div>
+                <div class="center"><img src="../pic/logoSF.png" alt="Logo" width="auto" height="80px"></div>
                 <div class="center">
-                    <a href="#" id="footer">Acceuil</a>
+                    <?php 
+                        if (isset($_SESSION["user_id"])) {
+                           echo "<a href='../user/home.php'>Accueil</a>";
+                            
+                        } else {
+                            
+                            echo "<a href='../user/index.php'>Accueil</a>";
+                            
+                        }
+                    ?>
                     &nbsp;
-                    <a href="about_us.php" id="footer">A porpos de nous</a>
+                    <a href="../template/about_us.php" id="footer">A porpos de nous</a>
                     &nbsp;
-                    <a href="policy.php" id="footer">Nos politiques</a>
+                    <a href="../template/policy.php" id="footer">Nos politiques</a>
                     &nbsp;
-                    <a href="offer.php" id="footer">Nos offres</a>
+                    <?php 
+                    
+                        if (!isset($_SESSION["user_id"])) {
+                            echo "<a href='../template/offer.php' id='footer'>Nos offres</a>";
+                             
+                        }
+                    ?>
                     &nbsp;
-                    <a href="contact.php" id="footer">Nous contacter</a>
+                    <a href="../template/contact.php" id="footer">Nous contacter</a>
                 </div>
                 <br>
                 <div class="containerF network_pc">
-                    <div class="left-text">Copyright &copy; 2024 XXXXX Tous droits réservés.</div>
+                    <div class="left-text">Copyright &copy; 2024 PET MATCH Tous droits réservés.</div>
                     <div class="right-text">
-                        <a class="right" href="#"><img src="pic/social_media/logo-insta-SF.png" width="35px" height="35px"></a>&nbsp;<a href="#"><img src="pic/social_media/logo-tiktok-SF.png" width="35px" height="35px"></a>&nbsp;<a href="#"><img src="pic/social_media/logo-x-SF.png" width="35px" height="31px"></a>
+                        <a class="right" href="#"><img src="../social_media/logo-insta-SF.png" width="35px" height="35px"></a>&nbsp;<a href="#"><img src="../social_media/logo-tiktok-SF.png" width="35px" height="35px"></a>&nbsp;<a href="#"><img src="../social_media/logo-x-SF.png" width="35px" height="31px"></a>
                     </div>
                 </div>
                 

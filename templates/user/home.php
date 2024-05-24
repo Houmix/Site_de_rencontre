@@ -44,7 +44,93 @@ try {
     padding: 5px;
     border:none;
     cursor: pointer;
-}</style>
+}
+/* Container styling */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Center align */
+.center {
+    text-align: center;
+}
+
+/* Block for user cards */
+.block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* User card styling */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+}
+
+/* User image styling */
+.user-image {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+/* User info styling */
+.user-info {
+    margin-bottom: 10px;
+}
+
+/* User name and age styling */
+.user-info h5 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.user-info h6 {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #666;
+}
+
+/* Actions (buttons) styling */
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.actions a {
+    text-decoration: none;
+    color: wheat;
+    background-color: #2a2b29;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.actions a:hover {
+    background-color: #2a2b29;
+}
+
+/* Additional link styling */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+</style>
 
 <div>
     <?php
@@ -75,54 +161,48 @@ try {
     ?>
 </div>
 <div class="container">
-    <div>
-        <h3>Mes matchs</h3>
+    <div class="center">
+        <h3>Retrouve tes match <a href="user_space.php">ici</a></h3>
     </div>
+
+    <br>
     <div>
-        <h3>Trouve ton ame soeur</h3>
+        <h3>Trouve ton âme sœur</h3>
         <div class="block">
             <?php 
-
                 if ($users){
                     foreach ($users as $user) {
-                        // Drapeau pour savoir si l'utilisateur doit être ignoré
                         $ignoreUser = false;
                         
                         foreach ($users_match as $user_match) {
                             if ($user_match["id"] == $user["id"]) {
                                 $ignoreUser = true;
-                                break; // Sortir de la boucle interne
+                                break;
                             }
                         }
                         
                         if ($ignoreUser) {
-                            continue; // Passer à l'utilisateur suivant
+                            continue;
                         }
                         
                         foreach ($users_blocked as $user_blocked) {
                             if ($user_blocked["id"] == $user["id"]) {
                                 $ignoreUser = true;
-                                break; // Sortir de la boucle interne
+                                break;
                             }
                         }
                         
                         if ($ignoreUser) {
-                            continue; // Passer à l'utilisateur suivant
+                            continue;
                         }
-
-                        
 
                         $dateOfBirth = $user['birthday'];
             
-                        // Vérifier que la date de naissance n'est pas null et créer un objet DateTime
                         if (!is_null($dateOfBirth)) {
                             $birthdate = DateTime::createFromFormat('Y-m-d', $dateOfBirth);
                             if ($birthdate) {
-                                // Obtenir la date actuelle
                                 $currentDate = new DateTime();
-                                // Calculer la différence entre la date actuelle et la date de naissance
                                 $age = $currentDate->diff($birthdate)->y;
-                                
                             } else {
                                 echo "Format de date de naissance invalide pour l'utilisateur ID: " . $user['id'] . "<br>";
                             }
@@ -131,24 +211,25 @@ try {
                         }
                
                         echo "<div class='card'>
-                            <h5>".$user['firstname']." ".$user['lastname']."</h5>
-                            <h6>.".$age."</h6>
+                            <img src='../pic/".$user['photo']."' alt='".$user['firstname']."' class='user-image'>
+                            <div class='user-info'>
+                                <h5>".$user['firstname']." ".$user['lastname']."</h5>
+                                <h6>".$age." ans</h6>
+                                <div class='actions'>
+                                    <a href='../feature/like.php?id=".$user['id']."' class='like-btn'>Liker</a>
+                                    <a href='../feature/see_profile.php?id=".$user['id']."' class='profile-btn'>Voir +</a>
+                                </div>
                             </div>
-                            <div class='container'>
-                                <a href='../feature/like.php?id=".$user['id']."' class='add-to-cart left-text' id='like'>Liker</a>
-                                <a href='../feature/see_profile.php?id=".$user['id']."' class='right-text'>Voir +</a>
-                            </div>";
-
+                        </div>";
                     }
                 } else {
                     echo "<h5>Pas de match possible</h5>";
                 }
-
             ?>
-
         </div>
     </div>
 </div>
+
 
 
 <?php include '../template/footer.php'; ?>

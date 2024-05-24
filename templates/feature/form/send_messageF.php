@@ -1,5 +1,4 @@
 <?php
-session_start();
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
@@ -24,8 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$sender_id, $receiver_id, $content]);
 
         echo "Message envoyé avec succès.";
-        // Rediriger vers une page de confirmation ou la liste des messages après envoi
-        header("Location: messages.php");
+        
+       // Construire l'URL de redirection avec les paramètres nécessaires
+        $redirect_url = "../send_message.php?message_to_user_id=".htmlspecialchars($receiver_id);
+
+        // Rediriger vers l'URL construite
+        header("Location: $redirect_url");
         exit();
     } catch (Exception $e) {
         echo "Erreur lors de l'envoi du message : " . $e->getMessage();

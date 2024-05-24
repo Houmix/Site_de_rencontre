@@ -24,11 +24,12 @@ try {
 
 ?>
 
-<link rel="stylesheet" href="css/my_space.css"></link>
-
+<link rel="stylesheet" href="../css/user_space.css"></link>
 
 <div class="my_infos"> 
-
+    <div class="center">
+        <img src="../pic/<?php echo $response['photo']; ?>" width="100px" height="100px">
+    </div>
     <div class="infos">
         <p class="type" >Genre :</p>
         <p class="value"><?php echo $response['gender']; ?></p>
@@ -83,7 +84,8 @@ try {
         <p class="value"><?php echo $response['bio']; ?></p>
     </div>
 
-    <a href='../feature/like.php?id=<?php echo $response['id']; ?>' class='add-to-cart left-text' id='like'>Liker</a>
     <a href="../user/home.php">Retour</a>
+    <a href='../feature/like.php?id=<?php echo $response['id']; ?>' class='add-to-cart left-text' id='like'>Liker</a>
+    
 
 </div>

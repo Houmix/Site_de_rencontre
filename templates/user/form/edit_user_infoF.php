@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $connexion = new PDO('sqlite:../../DB/my_database.db');
 
     // Préparer la requête SQL pour sélectionner l'utilisateur par son email
-    $requete = $connexion->prepare("SELECT * FROM utilisateurs WHERE id = ?");
+    $requete = $connexion->prepare("SELECT * FROM user WHERE id = ?");
     $requete->execute([$_SESSION["user_id"]]);
 
     // Récupérer le résultat de la requête
@@ -40,10 +40,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         city = :city,
         orientation = :orientatinon,
         bio = :bio,
-        dog_breed = :dog_breed
+        dog_breed = :dog_breed,
+        photo = :photo
         WHERE id = :id";
 
-        
+        $emailClean = preg_replace('/[^a-zA-Z0-9]/', '_', $email);
+
+        // Vérifier si un fichier a été téléchargé
+        if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
+            $fileTmpPath = $_FILES['photo']['tmp_name'];
+            $fileNameCmps = explode(".", $_FILES['photo']['name']);
+            $fileExtension = strtolower(end($fileNameCmps));
+            
+            // Nom de fichier basé sur l'email
+            $newFileName = $emailClean . '.' . $fileExtension;
+
+            // Répertoire de téléchargement
+            $uploadFileDir = '../../pic/';
+            $dest_path = $uploadFileDir . $newFileName;
+
+            if(move_uploaded_file($fileTmpPath, $dest_path)) {
+                $photo = $newFileName; // Nom du fichier sauvegardé
+            } else {
+                $_SESSION['erreur_photo'] = 'Il y a eu un problème avec le téléchargement du fichier.';
+                header("Location: ../edit_user_info.php");
+                exit;
+            }
+        } else {
+            $_SESSION['erreur_photo'] = 'Aucun fichier téléchargé ou erreur lors du téléchargement.';
+            header("Location: ../edit_user_info.php");
+            exit;
+        }
+
         $stmt = $connexion->prepare($sql);
 
         // Lier les paramètres
@@ -56,6 +84,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam('bio', $bio);
         $stmt->bindParam(':id', $userId);
         $stmt->bindParam(':dog_breed', $dog_breed);
+        $stmt->bindParam(':photo', $photo);
+
+
+
 
         // Exécuter la requête
         $stmt->execute();

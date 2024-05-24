@@ -1,7 +1,6 @@
 
 <?php include 'header.php'; ?>
     <div class="form">
-        <h2>Contactez-nous</h2>
         <form action="form/contactF.php" method="post">
             <label for="nom">Nom :</label><br>
             <input type="text" id="nom" name="nom" required><br>

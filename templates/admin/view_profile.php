@@ -29,6 +29,40 @@ if (isset($_GET['id'])) {
             echo '<p>Race de l\'animal : ' . htmlspecialchars($user['dog_breed']) . '</p>';
             echo '<p>Orientation : ' . htmlspecialchars($user['orienttion']) . '</p>';
             echo '<p>Abonnement : ' . htmlspecialchars($user['subscription']) . '</p>';
+            echo "<div>
+            <h3>Ses bloqués</h3>
+            <hr style='border-top: 10px solid #333; width:70%'>
+            <br>";
+            
+                // Requête SELECT pour récupérer les utilisateurs bloqués
+                $sql = "SELECT * FROM blocked WHERE user1_id = ?";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([$userId]);
+                $users_blocked = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach ($users_blocked as $blocked) {
+                    // Récupérer l'ID de l'utilisateur bloqué
+                    $blocked_user_id = $blocked['user2_id'];
+
+                    // Requête pour récupérer les informations de l'utilisateur bloqué
+                    $blocked_user_request = $pdo->prepare('SELECT * FROM user WHERE id = ?');
+                    $blocked_user_request->execute([$blocked_user_id]);
+                    $blocked_user = $blocked_user_request->fetch(PDO::FETCH_ASSOC);
+
+                    if ($blocked_user) {
+                        $birthdate = DateTime::createFromFormat('Y-m-d', $blocked_user['birthday']);
+                        $age = $birthdate ? (new DateTime())->diff($birthdate)->y : 'Inconnu';
+
+                        echo "<div class='card center'>
+                            <h5>".$blocked_user['firstname']." ".$blocked_user['lastname']."</h5>
+                            <h6>Age: ".$age." ans</h6>
+                            <br>
+                            <a href='unblocked.php?id=".$blocked_user['id']."?user_id=".$userId."' class='right-text'>Débloquer</a>
+                        </div>";
+                    }
+                }
+            echo "</div>";
+
         } else {
             echo 'Utilisateur non trouvé.';
         }
