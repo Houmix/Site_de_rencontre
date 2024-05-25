@@ -1,4 +1,15 @@
 <?php include '../template/header.php'; ?>
+<style>        main {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        p {
+            margin-bottom: 15px;
+        }</style>
     <h1>Politique de Confidentialité</h1>
     <p>Bienvenue sur notre site de rencontre. Nous accordons une grande importance à la protection de votre vie privée. Cette politique de confidentialité décrit les informations que nous recueillons, comment nous les utilisons et les mesures que nous prenons pour les protéger.</p>
 
