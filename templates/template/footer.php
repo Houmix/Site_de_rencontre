@@ -10,7 +10,7 @@
                             
                         } else {
                             
-                            echo "<a href='../user/index.php'>Accueil</a>";
+                            echo "<a href='../visitor/index.php'>Accueil</a>";
                             
                         }
                     ?>

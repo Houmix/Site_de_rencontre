@@ -77,7 +77,7 @@
                                 
                             } else {
                                 // Afficher les liens spécifiques aux utilisateurs non connectés
-                                echo "<li id='nav'><a href='../user/index.php'>Accueil</a></li>
+                                echo "<li id='nav'><a href='../visitor/index.php'>Accueil</a></li>
                                     <li id='nav'><a href='../template/contact.php'>Contact</a></li>
                                     <li id='nav'><a href='../visitor/login.php'>Connexion/Inscription</a></li>";
                                 

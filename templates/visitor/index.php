@@ -28,14 +28,14 @@
 </div>
 
 <div class="container" id="cards" style="height: min-content; padding: 100px 0;">
-    <div class="center"><h1>Titre</h1></div>
+    <div class="center"><h1>Nos offres</h1></div>
     <br><br>
     <div class="block">
         <?php 
             if ($subscriptions) {
                 foreach ($subscriptions as $subscription) {
                     echo "<div class='card'>
-                            <h5>Abonnement mensuel".htmlspecialchars($subscription['name'])."</h5>
+                            <h5>Abonnement mensuel ".htmlspecialchars($subscription['name'])."</h5>
                             <br>
                             <p>Description : ".htmlspecialchars($subscription['description'])."</p>
                             <p>Prix : ".htmlspecialchars($subscription['price'])."</p>
@@ -57,13 +57,16 @@
     <div class="block">
         
             <div class="card">
-                <p>presentation</p>
+                <h4>Sur PET MATCH, vous pouvez rencontrer des célibataires passionnés par les animaux de compagnie.
+                </h4>
             </div>
             <div class="card">
-                <p>presentation</p>
+                <h4>Créez des liens authentiques en partageant des promenades, des jeux et des moments de complicité avec vos animaux.
+
+                </h4>
             </div>
             <div class="card">
-                <p>presentation</p>
+                <h4>Ensemble, explorez des activités qui rendront heureux aussi bien les humains que leurs compagnons adorés.</h4>
             </div>
     </div>
     
