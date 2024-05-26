@@ -50,9 +50,9 @@ if (isset($_GET['message_to_user_id'])) {
 }
 ?>
 
-<link rel="stylesheet" type="text/css" href="send_message.css">
+<link rel="stylesheet" type="text/css" href="../css/send_message.css">
     
-</head>
+
 <body>
 
 

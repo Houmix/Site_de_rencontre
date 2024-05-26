@@ -31,7 +31,7 @@ $stmt->execute(['user_id' => $user_id]);
 $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<link rel="stylesheet" type="text/css" href="messages.css">
+<link rel="stylesheet" type="text/css" href="../css/messages.css">
 
 <h1>Vos messages</h1>
 <?php if (empty($messages)): ?>
