@@ -29,7 +29,7 @@ if (isset($_SESSION['blocked'])) {
                     <input type="password" id="password" name="password" required><br><br>
                 
         
-                    <a href="forgotten_password.php">Mot de passe oublié ?</a>
+                    
 
         
                     <a href="signUp.php">Créer un compte</a>
