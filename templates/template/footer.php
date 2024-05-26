@@ -15,7 +15,7 @@
                         }
                     ?>
                     &nbsp;
-                    <a href="../template/about_us.php" id="footer">A porpos de nous</a>
+                    <a href="../template/about_us.php" id="footer">A propos de nous</a>
                     &nbsp;
                     <a href="../template/policy.php" id="footer">Nos politiques</a>
                     &nbsp;

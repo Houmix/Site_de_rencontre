@@ -2,6 +2,10 @@
 <?php include '../template/header.php'; ?>
 
 <?php
+if (isset($_SESSION['user_id'])) {
+    header("Location: ../user/user_space.php");
+    exit();
+}
 if (isset($_SESSION['enregistrement_reussi'])) {
     echo "<p style='color: red;'>{$_SESSION['enregistrement_reussi']}</p>";
     unset($_SESSION["enregistrement_reussi"]);// Supprimer le message d'erreur de la session après l'avoir affiché

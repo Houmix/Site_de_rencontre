@@ -1,20 +1,33 @@
-<?php include '../template/header.php' ?>
+<?php include '../template/header.php';
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../visitor/login.php");
+    exit();
+} else {
 
-<style>
-        form {
-            max-width: 400px;
-            margin: auto;
+        $pdo = new PDO('sqlite:../DB/my_database.db');
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // Requête pour récupérer les informations de l'utilisateur
+        $request = $pdo->prepare('SELECT * FROM user WHERE id = ?');
+        $request->execute([$_SESSION["user_id"]]);
+        $response = $request->fetch(PDO::FETCH_ASSOC);
+
+        if ($response) {
+            // Requête pour récupérer les informations d'abonnement de l'utilisateur
+            if (!$response["is_admin"]) {
+                header("Location: ../user_space.php");
+                exit();
+        } else {
+            echo "Utilisateur non trouvé.";
+            header("Location: ../user_space.php");
+            exit();
         }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input, select, textarea {
-            width: 100%;
-            margin-bottom: 15px;
-            padding: 8px;
-        }
-    </style>
+}
+}
+
+?>
+
+<link rel="stylesheet" type="text/css" href="../css/user.css">
+
     <h1>Créer un utilisateur</h1>
     
     <form action="add_userF.php" method="POST">
@@ -69,5 +82,6 @@
         
         <input type="submit" value="Créer">
     </form>
-</body>
-</html>
+
+    
+    <?php include '../template/footer.php'; ?>

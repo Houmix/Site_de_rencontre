@@ -1,4 +1,11 @@
 <?php
+
+if (isset($_SESSION['user_id'])) {
+    header("Location: ../../user/user_space.php");
+    exit();
+}
+
+
 // Vérifier si des données ont été soumises
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

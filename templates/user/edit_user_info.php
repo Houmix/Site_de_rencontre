@@ -1,11 +1,15 @@
 <!-- index.php -->
-<?php include '../template/header.php'; ?>
+<?php include '../template/header.php'; 
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: ../visitor/login.php");
+        exit();
+    }?>
 <h2>Modification de mes infos</h2><br>
 
             
 <div class="form">
     <?php
-    session_start();
+    
 
 if (isset($_SESSION['erreur_envoi'])) {
     echo "<p style='color: red;'>{$_SESSION['erreur_envoi']}</p>";

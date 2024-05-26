@@ -2,7 +2,7 @@
 
 <?php
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: ../visitor/login.php");
     exit();
 }
 
@@ -50,37 +50,8 @@ if (isset($_GET['message_to_user_id'])) {
 }
 ?>
 
-
-    <style>
-        form {
-            max-width: 400px;
-            margin: auto;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input, select, textarea {
-            width: 100%;
-            margin-bottom: 15px;
-            padding: 8px;
-        }
-        .message {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-        .sender {
-            font-weight: bold;
-        }
-        .content {
-            margin-top: 5px;
-        }
-        .timestamp {
-            color: #999;
-            font-size: 0.9em;
-        }
-    </style>
+<link rel="stylesheet" type="text/css" href="send_message.css">
+    
 </head>
 <body>
 

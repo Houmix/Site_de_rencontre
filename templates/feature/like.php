@@ -1,5 +1,9 @@
 <?php include '../template/header.php'; ?>
 <?php
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../visitor/login.php");
+    exit();
+}
 try {
     // Connexion à la base de données SQLite
     $pdo = new PDO('sqlite:../DB/my_database.db');

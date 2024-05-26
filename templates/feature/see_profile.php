@@ -1,5 +1,9 @@
 <?php include '../template/header.php'; ?>
 <?php
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../visitor/login.php");
+    exit();
+}
 try {
     $userId = $_GET['id'];
 

@@ -1,6 +1,9 @@
 <?php
 session_start();
-
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../visitor/login.php");
+    exit();
+}
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $target_userId = $_POST['id'];
     

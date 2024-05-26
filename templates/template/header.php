@@ -50,7 +50,14 @@
                 </div>
     
                 <div class="center">
-                    <a href="../user/home.php"><img src="../pic/logoSF.png" alt="Logo" width="auto" height="80px"></a>
+                <?php
+                    if (isset($_SESSION["user_id"])) {
+                        echo "<a href='../user/home.php'><img src='../pic/logoSF.png' alt='Logo' width='auto' height='80px'></a>";
+                    } else {
+                        echo "<a href='../visitor/index.php'><img src='../pic/logoSF.png' alt='Logo' width='auto' height='80px'></a>";
+                    }
+                ?>
+                   
                 </div>
                 <div class="right">
                     <a href="#" id="openBtn">

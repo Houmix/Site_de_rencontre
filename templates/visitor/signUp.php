@@ -1,5 +1,9 @@
 <!-- index.php -->
-<?php include '../template/header.php'; ?>
+<?php include '../template/header.php'; 
+if (isset($_SESSION['user_id'])) {
+    header("Location: ../user/user_space.php");
+    exit();
+}?>
 <h2>Inscription</h2><br>
 
             
