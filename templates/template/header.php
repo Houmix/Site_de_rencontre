@@ -11,6 +11,8 @@
         
 
         
+        <?php  session_start(); ?>
+
 
         <title>Pet Match</title>
 
@@ -71,7 +73,7 @@
                         <a id="closeBtn" href="#" class="close">×</a>
                         <ul>
                         <?php
-                            session_start();
+                           
                             // Vérifier si l'utilisateur est connecté
                             
                             if (isset($_SESSION["user_id"])) {

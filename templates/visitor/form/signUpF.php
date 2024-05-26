@@ -1,12 +1,11 @@
 <?php
 
+session_start();
+
 if (isset($_SESSION['user_id'])) {
     header("Location: ../../user/user_space.php");
     exit();
 }
-
-
-// Vérifier si des données ont été soumises
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
@@ -50,45 +49,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    $connexion = new PDO('sqlite:../../DB/my_database.db');
+    try {
+        $connexion = new PDO('sqlite:../../DB/my_database.db');
+        $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Préparer la requête SQL pour sélectionner l'utilisateur par son email
-    $requete = $connexion->prepare("SELECT * FROM user WHERE email = ?");
-    $requete->execute([$email]);
+        // Préparer la requête SQL pour sélectionner l'utilisateur par son email
+        $requete = $connexion->prepare("SELECT * FROM user WHERE email = ?");
+        $requete->execute([$email]);
 
-    // Récupérer le résultat de la requête
-    $resultat = $requete->fetch();
-
-    if ($resultat) {
-        // Redirection vers le formulaire si e-mail déjà utilisé par un utilisateur
-        $_SESSION['erreur_email'] = "L'adresse email est déjà utilisée. Veuillez en choisir une autre.";
-        header("Location: ../signUp.php");
-        exit;
-    } else {
-        // Préparer et exécuter la requête SQL pour insérer l'utilisateur dans la table `user`
-        $requete = $connexion->prepare("INSERT INTO user (gender, firstname, lastname, email, password, phone, city, birthday, orientation, bio, dog_breed, photo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $resultat = $requete->execute([$gender, $firstname, $lastname, $email, $password, $phone, $city, $birthday, $orientation, $bio, $dog_breed, $photo]);
+        // Récupérer le résultat de la requête
+        $resultat = $requete->fetch();
 
         if ($resultat) {
-            // Envoyer email de confirmation
-            $sujet = "Confirmation d'inscription.";
-            $contenu = "Compte créé avec succès.";
-            $headers = "Compte activé";
-            if (mail($email, $sujet, $contenu, $headers)) {
-                echo "Votre message a été envoyé avec succès.";
-            } else {
-                echo "Une erreur s'est produite lors de l'envoi du message.";
-            }
-            // Succès enregistrement dans la base de données
-            $_SESSION['enregistrement_reussi'] = "Compte créé avec succès, connectez-vous.";
-            header("Location: ../login.php");
-            exit;
-        } else {
-            // Erreur enregistrement dans la base de données
-            $_SESSION['erreur_enregistrement'] = "Un problème est survenu lors de la création de votre compte";
+            // Redirection vers le formulaire si e-mail déjà utilisé par un utilisateur
+            $_SESSION['erreur_email'] = "L'adresse email est déjà utilisée. Veuillez en choisir une autre.";
             header("Location: ../signUp.php");
             exit;
+        } else {
+            // Préparer et exécuter la requête SQL pour insérer l'utilisateur dans la table `user`
+            $requete = $connexion->prepare("INSERT INTO user (gender, firstname, lastname, email, password, phone, city, birthday, orientation, bio, dog_breed, photo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $resultat = $requete->execute([$gender, $firstname, $lastname, $email, $password, $phone, $city, $birthday, $orientation, $bio, $dog_breed, $photo]);
+
+            if ($resultat) {
+                // Envoyer email de confirmation
+                $sujet = "Confirmation d'inscription.";
+                $contenu = "Compte créé avec succès.";
+                $headers = "Compte activé";
+                //if (mail($email, $sujet, $contenu, $headers)) {
+                    //echo "Votre message a été envoyé avec succès.";
+                //} else {
+                    //echo "Une erreur s'est produite lors de l'envoi du message.";
+                //}
+                // Succès enregistrement dans la base de données
+                $_SESSION['enregistrement_reussi'] = "Compte créé avec succès, connectez-vous.";
+                header("Location: ../login.php");
+                exit;
+            } else {
+                // Erreur enregistrement dans la base de données
+                $_SESSION['erreur_enregistrement'] = "Un problème est survenu lors de la création de votre compte";
+                header("Location: ../signUp.php");
+                exit;
+            }
         }
+    } catch (PDOException $e) {
+        echo "Erreur : " . $e->getMessage();
     }
 } else {
     // Redirection vers le formulaire si les données n'ont pas été soumises par POST

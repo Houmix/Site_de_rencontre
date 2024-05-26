@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         
         $_SESSION["wrong_passord"] = "Adresse e-mail ou mot de passe eronné.";
-        header("Location: ../index.php");
+        header("Location: ../login.php");
         exit;
     }
 
