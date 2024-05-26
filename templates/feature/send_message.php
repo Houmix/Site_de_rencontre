@@ -52,9 +52,6 @@ if (isset($_GET['message_to_user_id'])) {
 
     
 
-<body>
-
-
     <?php if (isset($messages)): ?>
         <h2>Discussion avec <?= htmlspecialchars($receiver['firstname'] . ' ' . $receiver['lastname']) ?></h2>
         <hr style="border-top: 10px solid #333; width:30%">

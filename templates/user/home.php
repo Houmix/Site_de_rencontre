@@ -75,6 +75,13 @@ try {
     ?>
 </div>
 <div class="container">
+    <div class="form">
+        <form action="search_user.php" method="GET">
+            <label for="search_term">Nom ou Prénom :</label>
+            <input type="text" id="search_term" name="search_term" required>
+            <button type="submit">Rechercher</button>
+        </form>
+    </div><br>
     <div class="center">
         <h3>Retrouve tes match <a href="user_space.php">ici</a></h3>
     </div>

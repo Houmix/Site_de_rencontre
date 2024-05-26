@@ -41,7 +41,8 @@ if (isset($_GET['id'])) {
 
         if ($user) {
             // Afficher les détails de l'utilisateur
-            echo '<h1>Profil de l\'utilisateur</h1><div class="form">';
+
+            echo '<div class="center"><h1>Profil de l\'utilisateur</h1><div class="card center">';
             echo '<p>ID : ' . htmlspecialchars($user['id']) . '</p>';
             echo '<p>Genre : ' . htmlspecialchars($user['gender']) . '</p>';
             echo '<p>Prénom : ' . htmlspecialchars($user['firstname']) . '</p>';
@@ -52,7 +53,7 @@ if (isset($_GET['id'])) {
             echo '<p>Animal : ' . htmlspecialchars($user['dog_breed']) . '</p>';
             echo '<p>Orientation : ' . htmlspecialchars($user['orientation']) . '</p>';
             echo '<p>Abonnement : ' . htmlspecialchars($user['subscription']) . '</p>';
-            echo "</div>
+            echo "</div></div>
             <div>
             <h3>Ses bloqués</h3>
             <hr style='border-top: 10px solid #333; width:70%'>
