@@ -1,20 +1,7 @@
 <?php include '../template/header.php' ?>
 
-<style>
-        form {
-            max-width: 400px;
-            margin: auto;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input, select, textarea {
-            width: 100%;
-            margin-bottom: 15px;
-            padding: 8px;
-        }
-    </style>
+<link rel="stylesheet" type="text/css" href="user.css">
+
     <h1>Créer un utilisateur</h1>
     
     <form action="add_userF.php" method="POST">

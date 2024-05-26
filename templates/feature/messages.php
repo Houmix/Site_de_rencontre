@@ -31,23 +31,7 @@ $stmt->execute(['user_id' => $user_id]);
 $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<style>
-    .message {
-        border: 1px solid #ddd;
-        padding: 10px;
-        margin-bottom: 10px;
-    }
-    .sender {
-        font-weight: bold;
-    }
-    .content {
-        margin-top: 5px;
-    }
-    .timestamp {
-        color: #999;
-        font-size: 0.9em;
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="messages.css">
 
 <h1>Vos messages</h1>
 <?php if (empty($messages)): ?>
