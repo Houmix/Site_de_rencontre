@@ -66,6 +66,11 @@ Utilisez les outils de recherche et de filtrage automatique pour trouver des uti
 Consultez les profils et liker pour commencer à envoyer des messages pour commencer à interagir.
 Nous accueillons toutes les contributions ! Pour signaler des bogues, suggérer des fonctionnalités ou soumettre du code, veuillez ouvrir une issue ou un pull request sur GitHub.
 
+Ce qui ne fonctionne pas : 
+
+-Page d'erreur/redirection si l'utilisateur entre une page non existante (par contre s'il entre une page qui lui est interdite alors il est bien redirigé)
+-Placer le lien vers la feuilles css dans le header. Pour les pages avec un css particulier, il faut ajouter le lien vers la feuilles de styles dans le code de la page or comme on utilise include pour avoir le footer et le header on en peut pas placer dans la balise header.
+
 
 
 Merci d'utiliser PET MATCH ! Nous espérons que vous et vos animaux trouverez des amis et des partenaires grâce à notre plateforme. Si vous avez des questions ou des commentaires, n'hésitez pas à nous contacter.
