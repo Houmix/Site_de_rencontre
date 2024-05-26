@@ -141,7 +141,7 @@ if (isset($_SESSION['success'])) {
         <p class="value"><?php echo htmlspecialchars($response['orientation']); ?></p>
     </div>
     <div class="infos">
-        <p class="type" >Race de l'animal :</p>
+        <p class="type" >Animal :</p>
         <p class="value"><?php echo htmlspecialchars($response['dog_breed']); ?></p>
     </div>
     <div class="infos">

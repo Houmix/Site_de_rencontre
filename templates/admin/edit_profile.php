@@ -77,13 +77,15 @@ if (isset($_GET['id'])) {
                     <option value="asexuel" <?php if ($user_orientation == 'asexuel') echo 'selected'; ?>>Asexuel(le)</option>
                     <option value="autre" <?php if ($user_orientation == 'autre') echo 'selected'; ?>>Autre</option>
                 </select>
-                <label for="dog_breed">Race de l'animal :</label><br>
+                <label for="dog_breed">Animal :</label><br>
                 <select id="dog_breed" name="dog_breed" required>
-                    <option value="Akita" <?php if ($dog_breed == 'Akita') echo 'selected'; ?>>Akita</option>
-                    <option value="Afghan Hound" <?php if ($dog_breed == 'Afghan Hound') echo 'selected'; ?>>Afghan Hound</option>
-                    <option value="Alaskan Klee Kai" <?php if ($dog_breed == 'Alaskan Klee Kai') echo 'selected'; ?>>Alaskan Klee Kai</option>
-                    <option value="American Hairless Terrier" <?php if ($dog_breed == 'American Hairless Terrier') echo 'selected'; ?>>American Hairless Terrier</option>
-                    <option value="American Foxhounds" <?php if ($dog_breed == 'American Foxhounds') echo 'selected'; ?>>American Foxhounds</option>
+                    <option value="Chien" <?php if ($dog_breed == 'Chien') echo 'selected'; ?>>Chien</option>
+                    <option value="Chat" <?php if ($dog_breed == 'Chat') echo 'selected'; ?>>Chat</option>
+                    <option value="Poisson" <?php if ($dog_breed == 'Poisson') echo 'selected'; ?>>Poisson</option>
+                    <option value="Serpent" <?php if ($dog_breed == 'Serpent') echo 'selected'; ?>>Serpent</option>
+                    <option value="Araigné" <?php if ($dog_breed == 'Araigné') echo 'selected'; ?>>Araigné</option>
+                    <option value="Oiseau" <?php if ($dog_breed == 'Oiseau') echo 'selected'; ?>>Oiseau</option>
+                    <option value="Hamster" <?php if ($dog_breed == 'Hamster') echo 'selected'; ?>>Hamster</option>
                 </select>
                 <label>Bio:</label>
                 <textarea name="bio"><?php echo htmlspecialchars($user['bio']); ?></textarea><br>

@@ -52,6 +52,12 @@ try {
     <link rel="stylesheet" href="../css/admin.css">      
     
     <p><a href="../user/user_space.php">Mon profile</a></p>
+    <br>
+    <form action="searchF.php" method="GET">
+        <label for="search_term">Nom ou Prénom :</label>
+        <input type="text" id="search_term" name="search_term" required>
+        <button type="submit">Rechercher</button>
+    </form>
     <h1>Liste des utilisateurs</h1>
     <table>
         <thead>
@@ -63,7 +69,7 @@ try {
                 <th>Email</th>
                 <th>Téléphone</th>
                 <th>Ville</th>
-                <th>Race de l'animal</th>
+                <th>Animal</th>
                 <th>Abonnement</th>
                 <th>Actions</th>
             </tr>

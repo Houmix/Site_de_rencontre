@@ -68,13 +68,15 @@ if (isset($_SESSION['enregistrement_reussi'])) {
             <option value="autre">Autre</option>
         </select><br>
 
-        <label for="dog_breed">Race de l'animal :</label><br>
+        <label for="dog_breed">Animal :</label><br>
         <select id="dog_breed" name="dog_breed">
-            <option value="Akita">Akita</option>
-            <option value="Afghan Hound">Afghan Hound</option>
-            <option value="Alaskan Klee Kai">Alaskan Klee Kai</option>
-            <option value="American Hairless Terrier">American Hairless Terrier</option>
-            <option value="American Foxhounds">American Foxhounds</option>
+            <option value="Chien">Chien</option>
+            <option value="Chat">Chat</option>
+            <option value="Poisson">Poisson</option>
+            <option value="Hamstere">Hamstere</option>
+            <option value="Oiseau">Oiseau</option>
+            <option value="Serpent">Serpent</option>
+            <option value="Araigné">Araigné</option>
         </select><br>
 
         <label for="bio">Biographie</label><br>

@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,20 +8,10 @@
         <meta charset="UTF-8">
 
 
-        <!-- Icône pour les navigateurs
-        <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
-        <!-- Icône pour les appareils Apple 
-        <link rel="apple-touch-icon" sizes="180x180" href="pic/favicon/apple-touch-icon.png">-->
-        <!-- Icône pour les navigateurs Chrome sur Android 
-        <link rel="icon" type="image/png" sizes="192x192" href="pic/favicon/android-chrome-192x192.png">-->
-        <!-- Icône pour les navigateurs Safari sur iOS 
-        <link rel="apple-touch-icon" sizes="152x152" href="pic/favicon/apple-touch-icon.png">-->
-        <!-- Icône pour les navigateurs Windows 
-        <meta name="msapplication-TileImage" content="favicon-32x32.png">
-        <meta name="msapplication-TileColor" content="#ffffff">-->
+        
 
 
-        <title>Site de rencontre</title>
+        <title>Pet Match</title>
 
         
         <link rel="stylesheet" href="../css/style.css">    

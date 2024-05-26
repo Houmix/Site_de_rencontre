@@ -66,15 +66,15 @@ if (isset($_SESSION['erreur_photo'])) {
         <label for="bio">Biographie</label><br>
         <input type="textarea" id="bio" name="bio"><br>
 
-        <label for="dog_breed">Race de l'animal :</label><br>
+        <label for="dog_breed">Animal :</label><br>
         <select id="dog_breed" name="dog_breed" required>
-            <option value="Akita">Akita</option>
-            <option value="Afghan Hound">Afghan Hound</option>
-            <option value="Alaskan Klee Kai">Alaskan Klee Kai</option>
-            <option value="American Hairless Terrier">American Hairless Terrier</option>
-            <option value="American Foxhounds">American Foxhounds</option>
-        </select><br>
-
+            <option value="Chien">Chien</option>
+            <option value="Chat">Chat</option>
+            <option value="Poisson">Poisson</option>
+            <option value="Hamstere">Hamstere</option>
+            <option value="Oiseau">Oiseau</option>
+            <option value="Serpent">Serpent</option>
+            <option value="Araigné">Araigné</option></select><br>
         <a href="user_space.php">Retour</a>
         <input type="submit" value="Enregistrer">
 

@@ -80,7 +80,7 @@ try {
         <p class="value"><?php echo $response['orientation']; ?></p>
     </div>
     <div class="infos">
-        <p class="type" >Race de l'animal :</p>
+        <p class="type" >Animal :</p>
         <p class="value"><?php echo $response['dog_breed']; ?></p>
     </div>
     <div class="infos">
