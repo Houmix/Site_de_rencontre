@@ -72,5 +72,10 @@ Ce qui ne fonctionne pas :
 -Placer le lien vers la feuilles css dans le header. Pour les pages avec un css particulier, il faut ajouter le lien vers la feuilles de styles dans le code de la page or comme on utilise include pour avoir le footer et le header on en peut pas placer dans la balise header.
 
 
+Compte admin : 
+mail : admin@admin.com
+mdp : admin
+
+
 
 Merci d'utiliser PET MATCH ! Nous espérons que vous et vos animaux trouverez des amis et des partenaires grâce à notre plateforme. Si vous avez des questions ou des commentaires, n'hésitez pas à nous contacter.
