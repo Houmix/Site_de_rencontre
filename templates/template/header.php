@@ -10,12 +10,23 @@
 
         
 
+        
 
         <title>Pet Match</title>
 
         
         <link rel="stylesheet" href="../css/style.css">    
         <link rel="stylesheet" href="../css/form.css">      
+        <?php if (isset($custom_css)): ?>
+            <link rel="stylesheet" type="text/css" href="<?= htmlspecialchars($custom_css) ?>">
+        <?php endif; ?>
+
+
+        <?php if (isset($title)): ?>
+            <title><?= htmlspecialchars($title) ?></title>
+        <?php else: ?>
+            <title>Pet Match</title>
+        <?php endif; ?>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <link rel="icon" type="image/vnd.icon" href="pic/favicon.ico">
@@ -85,8 +96,8 @@
                 </div>
             </div>
         </nav>
-        <div class="center">
+        <!--<div class="center">
             <p style="font-size: small;">&#x2714; 14 jours offerts</p>
-        </div>
+        </div>-->
 
         <main>

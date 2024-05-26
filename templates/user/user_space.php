@@ -1,4 +1,4 @@
-<?php include '../template/header.php'; ?>
+<?php include '../template/header.php';$custom_css = "../css/user_space.css"; ?>
 
 <?php 
 if (!isset($_SESSION['user_id'])) {
@@ -29,9 +29,8 @@ try {
 
 ?>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <title>Mon espace</title>
-<link rel="stylesheet" href="../css/user_space.css"></link>
+
 
 <h3>Mon abonnement</h3>
 <hr style="border-top: 10px solid #333; width:70%">

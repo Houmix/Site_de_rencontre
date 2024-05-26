@@ -4,24 +4,24 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: ../visitor/login.php");
     exit();
 } else {
-
-        $pdo = new PDO('sqlite:../DB/my_database.db');
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        // Requête pour récupérer les informations de l'utilisateur
-        $request = $pdo->prepare('SELECT * FROM user WHERE id = ?');
-        $request->execute([$_SESSION["user_id"]]);
-        $response = $request->fetch(PDO::FETCH_ASSOC);
-
-        if ($response) {
-            // Requête pour récupérer les informations d'abonnement de l'utilisateur
-            if (!$response["is_admin"]) {
-                header("Location: ../user_space.php");
-                exit();
-        } else {
-            echo "Utilisateur non trouvé.";
-            header("Location: ../user_space.php");
+    $pdo = new PDO('sqlite:../DB/my_database.db');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    $request = $pdo->prepare('SELECT * FROM user WHERE id = ?');
+    $request->execute([$_SESSION["user_id"]]);
+    $response = $request->fetchAll(PDO::FETCH_ASSOC);
+    
+    if ($response) {
+        // Accéder à la première ligne du tableau $response
+        $firstRow = $response[0];
+        // Vérifier si l'utilisateur est administrateur
+        if (!$firstRow["is_admin"]) {
+            header("Location: ../user/user_space.php");
             exit();
         }
+    } else {
+        echo "Utilisateur non trouvé.";
+        
     }
 }
 if (isset($_GET['id'])) {
@@ -41,7 +41,7 @@ if (isset($_GET['id'])) {
 
         if ($user) {
             // Afficher les détails de l'utilisateur
-            echo '<h1>Profil de l\'utilisateur</h1>';
+            echo '<h1>Profil de l\'utilisateur</h1><div class="form">';
             echo '<p>ID : ' . htmlspecialchars($user['id']) . '</p>';
             echo '<p>Genre : ' . htmlspecialchars($user['gender']) . '</p>';
             echo '<p>Prénom : ' . htmlspecialchars($user['firstname']) . '</p>';
@@ -49,10 +49,11 @@ if (isset($_GET['id'])) {
             echo '<p>Email : ' . htmlspecialchars($user['email']) . '</p>';
             echo '<p>Téléphone : ' . htmlspecialchars($user['phone']) . '</p>';
             echo '<p>Ville : ' . htmlspecialchars($user['city']) . '</p>';
-            echo '<p>Race de l\'animal : ' . htmlspecialchars($user['dog_breed']) . '</p>';
-            echo '<p>Orientation : ' . htmlspecialchars($user['orienttion']) . '</p>';
+            echo '<p>Animal : ' . htmlspecialchars($user['dog_breed']) . '</p>';
+            echo '<p>Orientation : ' . htmlspecialchars($user['orientation']) . '</p>';
             echo '<p>Abonnement : ' . htmlspecialchars($user['subscription']) . '</p>';
-            echo "<div>
+            echo "</div>
+            <div>
             <h3>Ses bloqués</h3>
             <hr style='border-top: 10px solid #333; width:70%'>
             <br>";

@@ -4,24 +4,24 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: ../visitor/login.php");
     exit();
 } else {
-
-        $pdo = new PDO('sqlite:../DB/my_database.db');
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        // Requête pour récupérer les informations de l'utilisateur
-        $request = $pdo->prepare('SELECT * FROM user WHERE id = ?');
-        $request->execute([$_SESSION["user_id"]]);
-        $response = $request->fetch(PDO::FETCH_ASSOC);
-
-        if ($response) {
-            // Requête pour récupérer les informations d'abonnement de l'utilisateur
-            if (!$response["is_admin"]) {
-                header("Location: ../user_space.php");
-                exit();
-        } else {
-            echo "Utilisateur non trouvé.";
-            header("Location: ../user_space.php");
+    $pdo = new PDO('sqlite:../DB/my_database.db');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    $request = $pdo->prepare('SELECT * FROM user WHERE id = ?');
+    $request->execute([$_SESSION["user_id"]]);
+    $response = $request->fetchAll(PDO::FETCH_ASSOC);
+    
+    if ($response) {
+        // Accéder à la première ligne du tableau $response
+        $firstRow = $response[0];
+        // Vérifier si l'utilisateur est administrateur
+        if (!$firstRow["is_admin"]) {
+            header("Location: ../user/user_space.php");
             exit();
         }
+    } else {
+        echo "Utilisateur non trouvé.";
+        
     }
 }
 if (isset($_GET['id'])) {

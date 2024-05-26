@@ -1,4 +1,4 @@
-<?php include '../template/header.php'; ?>
+<?php include '../template/header.php'; $custom_css = "../css/send_message.css"; ?>
 
 <?php
 if (!isset($_SESSION['user_id'])) {
@@ -50,7 +50,6 @@ if (isset($_GET['message_to_user_id'])) {
 }
 ?>
 
-<link rel="stylesheet" type="text/css" href="../css/send_message.css">
     
 
 <body>

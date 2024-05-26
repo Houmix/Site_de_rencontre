@@ -26,6 +26,7 @@ if (isset($_SESSION['erreur_photo'])) {
 
 
 ?>
+</div>
 
 <div class="form">
     <form action="form/edit_user_infoF.php" method="post">

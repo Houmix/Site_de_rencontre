@@ -4,24 +4,24 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: ../visitor/login.php");
     exit();
 } else {
-
-        $pdo = new PDO('sqlite:../DB/my_database.db');
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        // Requête pour récupérer les informations de l'utilisateur
-        $request = $pdo->prepare('SELECT * FROM user WHERE id = ?');
-        $request->execute([$_SESSION["user_id"]]);
-        $response = $request->fetch(PDO::FETCH_ASSOC);
-
-        if ($response) {
-            // Requête pour récupérer les informations d'abonnement de l'utilisateur
-            if (!$response["is_admin"]) {
-                header("Location: ../user_space.php");
-                exit();
-        } else {
-            echo "Utilisateur non trouvé.";
-            header("Location: ../user_space.php");
+    $pdo = new PDO('sqlite:../DB/my_database.db');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    $request = $pdo->prepare('SELECT * FROM user WHERE id = ?');
+    $request->execute([$_SESSION["user_id"]]);
+    $response = $request->fetchAll(PDO::FETCH_ASSOC);
+    
+    if ($response) {
+        // Accéder à la première ligne du tableau $response
+        $firstRow = $response[0];
+        // Vérifier si l'utilisateur est administrateur
+        if (!$firstRow["is_admin"]) {
+            header("Location: ../user/user_space.php");
             exit();
         }
+    } else {
+        echo "Utilisateur non trouvé.";
+        
     }
 }
 if (isset($_GET['id'])) {
@@ -42,23 +42,27 @@ if (isset($_GET['id'])) {
         if ($subscription) {
             // Afficher le formulaire d'édition
             ?>
-            <h1>Éditer le profil de l'utilisateur</h1>
-            <form action="update_subscription.php" method="POST">
-                <input type="hidden" name="id" value="<?php echo htmlspecialchars($subscription['id']); ?>">
-                <label>Description:</label>
-                <input type="text" name="description" value="<?php echo htmlspecialchars($subscription['description']); ?>"><br>
-                <label>Nom:</label>
-                <input type="text" name="name" value="<?php echo htmlspecialchars($subscription['name']); ?>"><br>
-                <label>Prix:</label>
-                <input type="email" name="price" value="<?php echo htmlspecialchars($subscription['price']); ?>"><br>
-                <label>Durée:</label>
-                <input type="text" name="duration" value="<?php echo htmlspecialchars($subscription['duration']); ?>"><br>
-                <label>Limite de like:</label>
-                <input type="text" name="limited_like" value="<?php echo htmlspecialchars($subscription['limited_like']); ?>"><br>
-                <label>Nombre de like:</label>
-                <input type="number" name="number_like" value="<?php echo htmlspecialchars($subscription['number_like']); ?>"><br>
-                <input type="submit" value="Mettre à jour">
-            </form>
+            <div class="form">
+
+            
+                <h1>Éditer le profil de l'utilisateur</h1>
+                <form action="update_subscription.php" method="POST">
+                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($subscription['id']); ?>">
+                    <label>Description:</label>
+                    <input type="text" name="description" value="<?php echo htmlspecialchars($subscription['description']); ?>"><br>
+                    <label>Nom:</label>
+                    <input type="text" name="name" value="<?php echo htmlspecialchars($subscription['name']); ?>"><br>
+                    <label>Prix:</label>
+                    <input type="email" name="price" value="<?php echo htmlspecialchars($subscription['price']); ?>"><br>
+                    <label>Durée:</label>
+                    <input type="text" name="duration" value="<?php echo htmlspecialchars($subscription['duration']); ?>"><br>
+                    <label>Limite de like:</label>
+                    <input type="text" name="limited_like" value="<?php echo htmlspecialchars($subscription['limited_like']); ?>"><br>
+                    <label>Nombre de like:</label>
+                    <input type="number" name="number_like" value="<?php echo htmlspecialchars($subscription['number_like']); ?>"><br>
+                    <input type="submit" value="Mettre à jour">
+                </form>
+            </div>
             <?php
         } else {
             echo 'Utilisateur non trouvé.';

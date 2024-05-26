@@ -1,4 +1,4 @@
-<?php include '../template/header.php'; ?>
+<?php include '../template/header.php'; $custom_css = "../css/user_space.css"; ?>
 <?php
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../visitor/login.php");
@@ -28,7 +28,6 @@ try {
 
 ?>
 
-<link rel="stylesheet" href="../css/user_space.css"></link>
 
 <div class="my_infos"> 
     <div class="center">

@@ -26,7 +26,7 @@ try {
     
 
     header("Location: user_space.php");
-
+    exit();
 
 } catch (Exception $e) {
     echo "Erreur lors de la récupération des utilisateurs : " . $e->getMessage();

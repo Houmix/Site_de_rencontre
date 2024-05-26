@@ -1,4 +1,5 @@
-<?php include '../template/header.php'; ?>
+<?php include '../template/header.php';
+$custom_css = "../css/home.css"; ?>
 <?php
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../visitor/login.php");
@@ -40,7 +41,9 @@ try {
 }
 ?>
 
-<link rel="stylesheet" type="text/css" href="home.css">
+
+
+
 
 
 <div>

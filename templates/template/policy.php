@@ -1,6 +1,5 @@
-<?php include '../template/header.php'; ?>
+<?php include '../template/header.php';$custom_css = "../css/policy.css";  ?>
 
-<link rel="stylesheet" type="text/css" href="policy.css">
 
     <h1>Politique de Confidentialité</h1>
     <p>Bienvenue sur notre site de rencontre. Nous accordons une grande importance à la protection de votre vie privée. Cette politique de confidentialité décrit les informations que nous recueillons, comment nous les utilisons et les mesures que nous prenons pour les protéger.</p>

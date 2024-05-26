@@ -1,6 +1,5 @@
-<?php include '../template/header.php'; ?>
+<?php include '../template/header.php';$custom_css = "../css/about_us.css";  ?>
 
-<link rel="stylesheet" type="text/css" href="about_us.css">
 
 
     <h1>À Propos de Nous</h1>

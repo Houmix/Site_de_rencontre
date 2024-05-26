@@ -1,4 +1,4 @@
-<?php include '../template/header.php'; ?>
+<?php include '../template/header.php';$custom_css = "../css/messages.css";  ?>
 
 <?php
 if (!isset($_SESSION['user_id'])) {
@@ -31,7 +31,7 @@ $stmt->execute(['user_id' => $user_id]);
 $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<link rel="stylesheet" type="text/css" href="../css/messages.css">
+
 
 <h1>Vos messages</h1>
 <?php if (empty($messages)): ?>
