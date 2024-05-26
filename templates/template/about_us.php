@@ -1,6 +1,6 @@
 <?php include '../template/header.php';$custom_css = "../css/about_us.css";  ?>
 
-
+<link rel="stylesheet" href="../css/about_us.css">     
 
     <h1>À Propos de Nous</h1>
     <p>Bienvenue sur notre site de rencontre ! Nous sommes dédiés à vous aider à trouver des relations significatives et durables. Voici un aperçu de qui nous sommes et de ce que nous faisons.</p>

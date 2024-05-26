@@ -27,7 +27,7 @@ try {
 }
 
 ?>
-
+<link rel="stylesheet" href="../css/user_space.css">     
 
 <div class="my_infos"> 
     <div class="center">

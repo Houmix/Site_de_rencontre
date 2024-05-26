@@ -1,14 +1,18 @@
-<?php include '../template/header.php';
+<?php include '../template/header.php';$title="Admin - Créer utilisateur";
 $custom_css = "../css/user.css"; 
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../visitor/login.php");
     exit();
 } else {
+    //Connexion base de donnée
     $pdo = new PDO('sqlite:../DB/my_database.db');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
+    //Enregistrement de la requête sql
     $request = $pdo->prepare('SELECT * FROM user WHERE id = ?');
+    //Execution de la requête
     $request->execute([$_SESSION["user_id"]]);
+    //Créer un tableau avec les reponses
     $response = $request->fetchAll(PDO::FETCH_ASSOC);
     
     if ($response) {

@@ -50,7 +50,7 @@ if (isset($_GET['message_to_user_id'])) {
 }
 ?>
 
-    
+<link rel="stylesheet" href="../css/send_message.css">     
 
     <?php if (isset($messages)): ?>
         <h2>Discussion avec <?= htmlspecialchars($receiver['firstname'] . ' ' . $receiver['lastname']) ?></h2>

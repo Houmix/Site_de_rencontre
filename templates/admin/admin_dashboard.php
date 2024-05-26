@@ -49,6 +49,7 @@ try {
     echo "Erreur lors de la récupération des utilisateurs : " . $e->getMessage();
 }
 ?>    
+<link rel="stylesheet" href="../css/admin.css">     
     
     <p><a href="../user/user_space.php">Mon profile</a></p>
     <br>

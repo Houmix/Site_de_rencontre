@@ -44,7 +44,7 @@ try {
 
 
 
-
+<link rel="stylesheet" href="../css/home.css">     
 
 <div>
     <?php

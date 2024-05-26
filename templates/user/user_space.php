@@ -31,7 +31,7 @@ try {
 
 <title>Mon espace</title>
 
-
+<link rel="stylesheet" href="../css/user_space.css">     
 <h3>Mon abonnement</h3>
 <hr style="border-top: 10px solid #333; width:70%">
 

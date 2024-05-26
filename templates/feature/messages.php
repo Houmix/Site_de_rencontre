@@ -32,7 +32,7 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
-
+<link rel="stylesheet" href="../css/messages.css">     
 <h1>Vos messages</h1>
 <?php if (empty($messages)): ?>
     <p>Vous n'avez aucun message.</p>

@@ -1,8 +1,9 @@
-<?php include '../template/header.php';$custom_css = "../css/suscribtion.css";
+<?php include '../template/header.php';$custom_css = "../css/suscribtion.css"; $title="Admin - Créer abonnement";
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../visitor/login.php");
     exit();
 } else {
+    //connexion à la base de donnée
     $pdo = new PDO('sqlite:../DB/my_database.db');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
@@ -25,8 +26,8 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 ?>
-
-
+<link rel="stylesheet" href="../css/suscribtion.css">     
+    
     <h1>Créer un abonnement</h1>
     <form action="add_subscriptionF.php" method="POST">
         <label>Nom:</label>
